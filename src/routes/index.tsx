@@ -1,24 +1,227 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import heroImg from "@/assets/workspace-hero.jpg";
+import projectDashboard from "@/assets/project-dashboard.jpg";
+import projectMessaging from "@/assets/project-messaging.jpg";
+import projectVideo from "@/assets/project-video.jpg";
+import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
+
+const portraitUrl = gloryAsset.url;
+
+/* --- Update these when you have the final details ---------------------- */
+const EMAIL = "hello@glorybobby.com"; // TODO: replace with your real email
+const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your profile URL
+const PROJECTS_URL = "https://example.com/projects"; // TODO: replace with your hosted projects page
+/* ------------------------------------------------------------------------ */
+
+const projects = [
+  {
+    title: "E-commerce Flow Optimization",
+    description:
+      "End-to-end customer journey mapping and lifecycle automation for a high-growth retail brand.",
+    image: projectDashboard,
+    alt: "Marketing automation dashboard with performance charts",
+  },
+  {
+    title: "B2B Lead Nurture Architecture",
+    description:
+      "Custom CRM integration and automated messaging sequences that reduced manual data entry by 70%.",
+    image: projectMessaging,
+    alt: "Automated messaging flows shown on two phones",
+  },
+  {
+    title: "Automated Content Distribution",
+    description:
+      "Video-first content pipeline deploying campaigns across six platforms from a single workflow.",
+    image: projectVideo,
+    alt: "Video editing timeline on an ultrawide monitor",
+  },
+];
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title: "Glory Bobby Bassey — Marketing & Automation Specialist",
+      },
+      {
+        name: "description",
+        content:
+          "Portfolio of Glory Bobby Bassey, Marketing and Automation Specialist. Building automation frameworks that help brands communicate with precision at scale.",
+      },
+      {
+        property: "og:title",
+        content: "Glory Bobby Bassey — Marketing & Automation Specialist",
+      },
+      {
+        property: "og:description",
+        content:
+          "Building automation frameworks that help brands communicate with precision at scale.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background font-sans text-foreground">
+      {/* Hero */}
+      <header className="relative flex h-screen w-full flex-col justify-end overflow-hidden p-6 md:p-12">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImg}
+            alt="Sunlit minimalist workspace with a laptop on an oak desk"
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-foreground/40" />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
+          <h1 className="mb-4 font-display text-5xl leading-none text-background text-balance md:text-8xl lg:text-9xl">
+            Glory Bobby Bassey
+          </h1>
+          <p className="text-lg font-medium tracking-tight text-background/85 md:text-2xl">
+            Marketing and Automation Specialist
+          </p>
+        </div>
+      </header>
+
+      {/* About */}
+      <section id="about" className="bg-background px-6 py-24 md:px-12 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-start gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <img
+                src={portraitUrl}
+                alt="Portrait of Glory Bobby Bassey"
+                className="aspect-[4/5] w-full rounded-xl object-cover shadow-sm ring-1 ring-black/5"
+              />
+            </div>
+            <div className="pt-4 lg:col-span-7">
+              <h2 className="mb-8 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
+                Transforming systems into scalable growth engines.
+              </h2>
+              <div className="max-w-[56ch] space-y-6 text-lg leading-relaxed text-pretty text-muted-foreground">
+                <p>
+                  I'm Glory — a marketing and automation specialist who bridges
+                  the gap between creative strategy and technical execution. I
+                  build automation frameworks that allow brands to communicate
+                  with precision at scale, turning complex funnels into seamless
+                  customer journeys.
+                </p>
+                <p>
+                  My approach combines data-driven insights with an editorial
+                  sensibility, so every automated touchpoint feels personal and
+                  high-value rather than mechanical. From email ecosystems to
+                  CRM integrations and content pipelines, I design systems that
+                  keep working while you sleep.
+                </p>
+              </div>
+              <div className="mt-10">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground ring-1 ring-primary/10 transition-colors hover:bg-primary/90"
+                >
+                  Work with me
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="bg-secondary px-6 py-24 md:px-12 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 flex items-end justify-between">
+            <h2 className="font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
+              Selected Works
+            </h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <div key={project.title} className="group flex flex-col">
+                <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-black/5">
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    width={944}
+                    height={704}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <h3 className="mb-2 text-xl font-medium">{project.title}</h3>
+                <p className="mb-6 max-w-[48ch] text-sm text-pretty text-muted-foreground">
+                  {project.description}
+                </p>
+                <a
+                  href={PROJECTS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-accent"
+                >
+                  View project
+                  <ArrowUpRight className="size-4" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="bg-primary px-6 py-24 text-primary-foreground md:px-12 md:py-32">
+        <div className="mx-auto flex max-w-7xl flex-col items-center text-center">
+          <span className="mb-8 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/60">
+            Available for new projects
+          </span>
+          <h2 className="mb-12 font-display text-5xl leading-none text-balance md:text-7xl lg:text-8xl">
+            Let's build something efficient.
+          </h2>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground ring-1 ring-accent/20 transition-colors hover:bg-accent/90"
+          >
+            <Mail className="size-4" />
+            Send an inquiry
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-primary-foreground/10 bg-primary px-6 py-12 text-primary-foreground md:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+          >
+            {EMAIL}
+          </a>
+          <div className="flex items-center gap-6">
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+            >
+              <Linkedin className="size-4" />
+              LinkedIn
+            </a>
+          </div>
+          <p className="text-[10px] uppercase tracking-widest text-primary-foreground/40">
+            &copy; 2026 Glory Bobby Bassey
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
