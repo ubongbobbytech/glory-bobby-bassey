@@ -15,6 +15,59 @@ const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your pro
 const PROJECTS_URL = "https://example.com/projects"; // TODO: replace with your hosted projects page
 /* ------------------------------------------------------------------------ */
 
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+const experience = [
+  // TODO: replace with your real roles, companies, dates and achievements
+  {
+    role: "Marketing & Automation Specialist",
+    company: "Freelance / Contract",
+    period: "2023 — Present",
+    description:
+      "Designing end-to-end marketing automation systems for brands — email ecosystems, CRM workflows and content pipelines that run on autopilot.",
+  },
+  {
+    role: "Digital Marketing Specialist",
+    company: "Placeholder Company",
+    period: "2021 — 2023",
+    description:
+      "Owned campaign execution across email, social and paid channels, building reporting dashboards that connected spend to revenue.",
+  },
+  {
+    role: "Marketing Coordinator",
+    company: "Placeholder Company",
+    period: "2019 — 2021",
+    description:
+      "Supported campaign operations and lead management, streamlining handoffs between creative, sales and analytics teams.",
+  },
+];
+
+const skillGroups = [
+  // TODO: adjust to your real stack
+  {
+    title: "Marketing Automation",
+    items: ["HubSpot", "Mailchimp", "Klaviyo", "ActiveCampaign", "Zapier", "Make"],
+  },
+  {
+    title: "CRM & Data",
+    items: ["Salesforce", "HubSpot CRM", "Airtable", "Notion", "Google Sheets", "SQL"],
+  },
+  {
+    title: "Analytics",
+    items: ["Google Analytics 4", "Looker Studio", "Meta Ads Manager", "Hotjar", "A/B Testing"],
+  },
+  {
+    title: "Content & Creative",
+    items: ["Adobe Premiere Pro", "CapCut", "Figma", "Canva", "Screenshot & Video Tutorials"],
+  },
+];
+
 const projects = [
   {
     title: "E-commerce Flow Optimization",
@@ -69,8 +122,31 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
+      {/* Site navigation */}
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
+          <a
+            href="#top"
+            className="font-display text-xl leading-none tracking-tight"
+          >
+            GB<span className="text-primary">.</span>
+          </a>
+          <div className="flex items-center gap-2 md:gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:px-4"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* Hero */}
-      <header className="relative flex h-screen w-full flex-col justify-end overflow-hidden p-6 md:p-12">
+      <header id="top" className="relative flex h-screen w-full flex-col justify-end overflow-hidden p-6 md:p-12">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImg}
@@ -79,14 +155,14 @@ function Index() {
             height={1080}
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-foreground/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl">
-          <h1 className="mb-4 font-display text-5xl leading-none text-background text-balance md:text-8xl lg:text-9xl">
+          <h1 className="mb-4 font-display text-5xl leading-none text-foreground text-balance md:text-8xl lg:text-9xl">
             Glory Bobby Bassey
           </h1>
-          <p className="text-lg font-medium tracking-tight text-background/85 md:text-2xl">
+          <p className="text-lg font-medium tracking-tight text-foreground/80 md:text-2xl">
             Marketing and Automation Specialist
           </p>
         </div>
@@ -100,10 +176,13 @@ function Index() {
               <img
                 src={portraitUrl}
                 alt="Portrait of Glory Bobby Bassey"
-                className="aspect-[4/5] w-full rounded-xl object-cover shadow-sm ring-1 ring-black/5"
+                className="aspect-[4/5] w-full rounded-xl object-cover shadow-lg ring-1 ring-border"
               />
             </div>
             <div className="pt-4 lg:col-span-7">
+              <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
+                About me
+              </span>
               <h2 className="mb-8 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
                 Transforming systems into scalable growth engines.
               </h2>
@@ -126,7 +205,7 @@ function Index() {
               <div className="mt-10">
                 <a
                   href="#contact"
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground ring-1 ring-primary/10 transition-colors hover:bg-primary/90"
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Work with me
                 </a>
@@ -136,19 +215,84 @@ function Index() {
         </div>
       </section>
 
+      {/* Experience */}
+      <section id="experience" className="bg-secondary px-6 py-24 md:px-12 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
+            Experience
+          </span>
+          <h2 className="mb-16 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
+            Where I've built and shipped.
+          </h2>
+
+          <ol className="relative space-y-0 border-l border-border">
+            {experience.map((job) => (
+              <li key={job.role} className="relative pb-12 pl-8 last:pb-0 md:pl-12">
+                <span className="absolute -left-[7px] top-2 size-3.5 rounded-full border-2 border-primary bg-background" />
+                <p className="mb-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                  {job.period}
+                </p>
+                <h3 className="text-xl font-medium md:text-2xl">{job.role}</h3>
+                <p className="mb-3 text-sm font-medium text-primary">{job.company}</p>
+                <p className="max-w-[60ch] text-sm leading-relaxed text-pretty text-muted-foreground">
+                  {job.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Skills & tools */}
+      <section id="skills" className="bg-background px-6 py-24 md:px-12 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
+            Skills & tools
+          </span>
+          <h2 className="mb-16 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
+            The stack behind the systems.
+          </h2>
+
+          <div className="grid gap-10 md:grid-cols-2">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="rounded-xl border border-border bg-card p-6 md:p-8">
+                <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                  {group.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-border bg-muted px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects */}
       <section id="projects" className="bg-secondary px-6 py-24 md:px-12 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 flex items-end justify-between">
-            <h2 className="font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
-              Selected Works
-            </h2>
+            <div>
+              <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
+                Projects
+              </span>
+              <h2 className="font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
+                Selected Works
+              </h2>
+            </div>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <div key={project.title} className="group flex flex-col">
-                <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-black/5">
+                <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-border">
                   <img
                     src={project.image}
                     alt={project.alt}
@@ -166,7 +310,7 @@ function Index() {
                   href={PROJECTS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-accent"
+                  className="mt-auto inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-primary"
                 >
                   View project
                   <ArrowUpRight className="size-4" />
@@ -180,7 +324,7 @@ function Index() {
       {/* Contact */}
       <section id="contact" className="bg-primary px-6 py-24 text-primary-foreground md:px-12 md:py-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center text-center">
-          <span className="mb-8 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/60">
+          <span className="mb-8 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/70">
             Available for new projects
           </span>
           <h2 className="mb-12 font-display text-5xl leading-none text-balance md:text-7xl lg:text-8xl">
@@ -188,7 +332,7 @@ function Index() {
           </h2>
           <a
             href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground ring-1 ring-accent/20 transition-colors hover:bg-accent/90"
+            className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
           >
             <Mail className="size-4" />
             Send an inquiry
@@ -197,11 +341,11 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-primary-foreground/10 bg-primary px-6 py-12 text-primary-foreground md:px-12">
+      <footer className="border-t border-border bg-background px-6 py-12 md:px-12">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
           <a
             href={`mailto:${EMAIL}`}
-            className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             {EMAIL}
           </a>
@@ -211,13 +355,13 @@ function Index() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <Linkedin className="size-4" />
               LinkedIn
             </a>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-primary-foreground/40">
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70">
             &copy; 2026 Glory Bobby Bassey
           </p>
         </div>
