@@ -276,14 +276,14 @@ function Index() {
                   keep working while you sleep.
                 </p>
               </div>
-              <div className="mt-10">
+              <Reveal className="mt-10 inline-block">
                 <a
                   href="#contact"
                   className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Work with me
                 </a>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
