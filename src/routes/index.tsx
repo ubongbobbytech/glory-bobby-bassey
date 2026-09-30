@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
+import { Reveal } from "@/components/reveal";
+
 import {
   Dialog,
   DialogContent,
@@ -14,6 +16,7 @@ import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
+import projectOnboarding from "@/assets/project-onboarding.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 
 const portraitUrl = gloryAsset.url;
@@ -137,6 +140,26 @@ const projects = [
     ],
     tools: ["Make", "Adobe Premiere Pro", "CapCut", "Notion"],
   },
+  {
+    title: "Client Onboarding Automation",
+    description:
+      "A hands-free onboarding funnel in GoHighLevel that takes new leads from signup to kickoff without manual steps.",
+    image: projectOnboarding,
+    alt: "Client onboarding funnel and automation workflow on a laptop screen",
+    overview:
+      "A complete onboarding system built in GoHighLevel — new signups are captured, qualified and routed through an automated workflow that emails, creates deals and notifies the team before anyone lifts a finger.",
+    highlights: [
+      "Built a multi-stage onboarding funnel with automatic lead capture and tagging",
+      "Automated welcome sequences, deal creation and team notifications",
+      "Added follow-up reminders so no new client waits more than 24 hours",
+    ],
+    results: [
+      { label: "Onboarding time", value: "-65%" },
+      { label: "Follow-up speed", value: "<24h" },
+      { label: "Manual steps", value: "0" },
+    ],
+    tools: ["GoHighLevel", "Zapier", "Calendly", "Google Sheets"],
+  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -253,14 +276,14 @@ function Index() {
                   keep working while you sleep.
                 </p>
               </div>
-              <div className="mt-10">
+              <Reveal className="mt-10 inline-block">
                 <a
                   href="#contact"
                   className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Work with me
                 </a>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -340,8 +363,8 @@ function Index() {
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {projects.map((project, index) => (
               <div key={project.title} className="group flex flex-col">
                 <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-border">
                   <img
@@ -357,14 +380,16 @@ function Index() {
                 <p className="mb-6 max-w-[48ch] text-sm text-pretty text-muted-foreground">
                   {project.description}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setActiveProject(project)}
-                  className="mt-auto inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
-                >
-                  View project
-                  <ArrowUpRight className="size-4" />
-                </button>
+                <Reveal className="mt-auto inline-block" delay={index * 120}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveProject(project)}
+                    className="inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    View project
+                    <ArrowUpRight className="size-4" />
+                  </button>
+                </Reveal>
               </div>
             ))}
           </div>
@@ -380,13 +405,15 @@ function Index() {
           <h2 className="mb-12 font-display text-5xl leading-none text-balance md:text-7xl lg:text-8xl">
             Let's build something efficient.
           </h2>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
-          >
-            <Mail className="size-4" />
-            Send an inquiry
-          </a>
+          <Reveal className="inline-block">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
+            >
+              <Mail className="size-4" />
+              Send an inquiry
+            </a>
+          </Reveal>
         </div>
       </section>
 
