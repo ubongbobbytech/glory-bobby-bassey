@@ -1,5 +1,14 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, X } from "lucide-react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
