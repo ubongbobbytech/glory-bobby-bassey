@@ -358,15 +358,14 @@ function Index() {
                 <p className="mb-6 max-w-[48ch] text-sm text-pretty text-muted-foreground">
                   {project.description}
                 </p>
-                <a
-                  href={PROJECTS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(project)}
+                  className="mt-auto inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
                 >
                   View project
                   <ArrowUpRight className="size-4" />
-                </a>
+                </button>
               </div>
             ))}
           </div>
