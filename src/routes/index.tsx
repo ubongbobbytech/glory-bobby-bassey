@@ -140,6 +140,26 @@ const projects = [
     ],
     tools: ["Make", "Adobe Premiere Pro", "CapCut", "Notion"],
   },
+  {
+    title: "Client Onboarding Automation",
+    description:
+      "A hands-free onboarding funnel in GoHighLevel that takes new leads from signup to kickoff without manual steps.",
+    image: projectOnboarding,
+    alt: "Client onboarding funnel and automation workflow on a laptop screen",
+    overview:
+      "A complete onboarding system built in GoHighLevel — new signups are captured, qualified and routed through an automated workflow that emails, creates deals and notifies the team before anyone lifts a finger.",
+    highlights: [
+      "Built a multi-stage onboarding funnel with automatic lead capture and tagging",
+      "Automated welcome sequences, deal creation and team notifications",
+      "Added follow-up reminders so no new client waits more than 24 hours",
+    ],
+    results: [
+      { label: "Onboarding time", value: "-65%" },
+      { label: "Follow-up speed", value: "<24h" },
+      { label: "Manual steps", value: "0" },
+    ],
+    tools: ["GoHighLevel", "Zapier", "Calendly", "Google Sheets"],
+  },
 ];
 
 export const Route = createFileRoute("/")({
