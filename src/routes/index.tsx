@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
+import { Reveal } from "@/components/reveal";
+
 import {
   Dialog,
   DialogContent,
@@ -14,6 +16,7 @@ import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
+import projectOnboarding from "@/assets/project-onboarding.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 
 const portraitUrl = gloryAsset.url;
