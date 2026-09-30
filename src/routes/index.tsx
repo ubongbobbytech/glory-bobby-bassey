@@ -363,8 +363,8 @@ function Index() {
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {projects.map((project, index) => (
               <div key={project.title} className="group flex flex-col">
                 <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-border">
                   <img
