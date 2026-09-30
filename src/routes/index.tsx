@@ -417,6 +417,110 @@ function Index() {
           </p>
         </div>
       </footer>
+
+      {/* Project detail modal */}
+      <Dialog
+        open={activeProject !== null}
+        onOpenChange={(open) => {
+          if (!open) setActiveProject(null);
+        }}
+      >
+        <DialogContent className="max-h-[90vh] gap-0 overflow-y-auto border-border bg-card p-0 sm:max-w-2xl">
+          {activeProject && (
+            <>
+              <div className="relative">
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.alt}
+                  width={944}
+                  height={704}
+                  className="aspect-[16/9] w-full rounded-t-xl object-cover"
+                />
+                <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
+              </div>
+
+              <div className="space-y-8 p-6 md:p-10">
+                <DialogHeader className="space-y-3 text-left">
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+                    Case study
+                  </span>
+                  <DialogTitle className="font-display text-3xl leading-tight md:text-4xl">
+                    {activeProject.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-base leading-relaxed text-muted-foreground">
+                    {activeProject.overview}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    What it involved
+                  </h4>
+                  <ul className="space-y-3">
+                    {activeProject.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-[7px] size-1.5 shrink-0 rounded-full bg-primary"
+                        />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    Results
+                  </h4>
+                  <div className="grid grid-cols-3 gap-4">
+                    {activeProject.results.map((result) => (
+                      <div
+                        key={result.label}
+                        className="rounded-lg border border-border bg-muted/50 p-4 text-center"
+                      >
+                        <p className="font-display text-2xl text-primary">
+                          {result.value}
+                        </p>
+                        <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                          {result.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    Tools used
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {activeProject.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-full border border-border bg-muted px-3.5 py-1.5 text-sm text-muted-foreground"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  <Mail className="mr-2 size-4" />
+                  Ask me about this project
+                </a>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
