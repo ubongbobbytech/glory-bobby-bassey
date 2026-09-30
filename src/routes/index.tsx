@@ -84,6 +84,19 @@ const projects = [
       "End-to-end customer journey mapping and lifecycle automation for a high-growth retail brand.",
     image: projectDashboard,
     alt: "Marketing automation dashboard with performance charts",
+    overview:
+      "A complete overhaul of the customer journey for a fast-growing retail brand — from first-touch welcome series to post-purchase retention flows.",
+    highlights: [
+      "Mapped the full journey across email, SMS and on-site touchpoints",
+      "Rebuilt abandoned-cart and win-back flows with dynamic product feeds",
+      "Segmented the audience by purchase behavior and engagement score",
+    ],
+    results: [
+      { label: "Open rate", value: "+38%" },
+      { label: "Cart recovery", value: "2.4x" },
+      { label: "Manual work", value: "-60%" },
+    ],
+    tools: ["Klaviyo", "Shopify", "GA4", "Looker Studio"],
   },
   {
     title: "B2B Lead Nurture Architecture",
@@ -91,6 +104,19 @@ const projects = [
       "Custom CRM integration and automated messaging sequences that reduced manual data entry by 70%.",
     image: projectMessaging,
     alt: "Automated messaging flows shown on two phones",
+    overview:
+      "A custom CRM integration connecting form captures, enrichment and scoring to automated nurture sequences — so leads move without anyone touching a spreadsheet.",
+    highlights: [
+      "Built a bidirectional sync between web forms, CRM and email platform",
+      "Designed lead scoring that routes hot prospects to sales in real time",
+      "Automated a 6-step nurture sequence tailored to industry and role",
+    ],
+    results: [
+      { label: "Manual data entry", value: "-70%" },
+      { label: "Lead response time", value: "-85%" },
+      { label: "MQL to SQL", value: "+24%" },
+    ],
+    tools: ["HubSpot", "Zapier", "Salesforce", "Airtable"],
   },
   {
     title: "Automated Content Distribution",
@@ -98,6 +124,19 @@ const projects = [
       "Video-first content pipeline deploying campaigns across six platforms from a single workflow.",
     image: projectVideo,
     alt: "Video editing timeline on an ultrawide monitor",
+    overview:
+      "A video-first content engine that takes a single master asset and automatically versions, schedules and publishes it across six channels.",
+    highlights: [
+      "Single upload fans out to Instagram, TikTok, YouTube, LinkedIn and more",
+      "Auto-generated captions, aspect ratios and thumbnails per platform",
+      "Publishing calendar driven by a single no-code workflow",
+    ],
+    results: [
+      { label: "Publishing time", value: "-80%" },
+      { label: "Platforms covered", value: "6" },
+      { label: "Content output", value: "3x" },
+    ],
+    tools: ["Make", "Adobe Premiere Pro", "CapCut", "Notion"],
   },
 ];
 
