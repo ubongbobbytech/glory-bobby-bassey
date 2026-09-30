@@ -405,13 +405,15 @@ function Index() {
           <h2 className="mb-12 font-display text-5xl leading-none text-balance md:text-7xl lg:text-8xl">
             Let's build something efficient.
           </h2>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
-          >
-            <Mail className="size-4" />
-            Send an inquiry
-          </a>
+          <Reveal className="inline-block">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
+            >
+              <Mail className="size-4" />
+              Send an inquiry
+            </a>
+          </Reveal>
         </div>
       </section>
 
