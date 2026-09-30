@@ -168,6 +168,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeProject, setActiveProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       {/* Site navigation */}
