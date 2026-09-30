@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight, X } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 import {
   Dialog,
@@ -21,7 +21,6 @@ const portraitUrl = gloryAsset.url;
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "hello@glorybobby.com"; // TODO: replace with your real email
 const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your profile URL
-const PROJECTS_URL = "https://example.com/projects"; // TODO: replace with your hosted projects page
 /* ------------------------------------------------------------------------ */
 
 const navLinks = [
