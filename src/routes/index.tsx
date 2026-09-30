@@ -214,7 +214,7 @@ function Index() {
             Glory Bobby Bassey
           </h1>
           <p className="text-lg font-medium tracking-tight text-foreground/80 md:text-2xl">
-            Marketing and Automation Specialist
+            GHL &amp; Marketing Automation Specialist
           </p>
         </div>
       </header>
