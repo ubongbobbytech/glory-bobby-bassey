@@ -59,26 +59,6 @@ const experience = [
   },
 ];
 
-const skillGroups = [
-  // TODO: adjust to your real stack
-  {
-    title: "Marketing Automation",
-    items: ["HubSpot", "Mailchimp", "Klaviyo", "ActiveCampaign", "Zapier", "Make"],
-  },
-  {
-    title: "CRM & Data",
-    items: ["Salesforce", "HubSpot CRM", "Airtable", "Notion", "Google Sheets", "SQL"],
-  },
-  {
-    title: "Analytics",
-    items: ["Google Analytics 4", "Looker Studio", "Meta Ads Manager", "Hotjar", "A/B Testing"],
-  },
-  {
-    title: "Content & Creative",
-    items: ["Adobe Premiere Pro", "CapCut", "Figma", "Canva", "Screenshot & Video Tutorials"],
-  },
-];
-
 const projects = [
   {
     title: "E-commerce Flow Optimization",
