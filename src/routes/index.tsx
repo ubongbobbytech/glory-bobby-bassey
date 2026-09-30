@@ -19,7 +19,7 @@ import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 const portraitUrl = gloryAsset.url;
 
 /* --- Update these when you have the final details ---------------------- */
-const EMAIL = "glorybobby@gmail.com"; // TODO: replace with your real email
+const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
 const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your profile URL
 /* ------------------------------------------------------------------------ */
 
