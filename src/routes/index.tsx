@@ -1,5 +1,14 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
@@ -12,7 +21,6 @@ const portraitUrl = gloryAsset.url;
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "hello@glorybobby.com"; // TODO: replace with your real email
 const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your profile URL
-const PROJECTS_URL = "https://example.com/projects"; // TODO: replace with your hosted projects page
 /* ------------------------------------------------------------------------ */
 
 const navLinks = [
@@ -75,6 +83,19 @@ const projects = [
       "End-to-end customer journey mapping and lifecycle automation for a high-growth retail brand.",
     image: projectDashboard,
     alt: "Marketing automation dashboard with performance charts",
+    overview:
+      "A complete overhaul of the customer journey for a fast-growing retail brand — from first-touch welcome series to post-purchase retention flows.",
+    highlights: [
+      "Mapped the full journey across email, SMS and on-site touchpoints",
+      "Rebuilt abandoned-cart and win-back flows with dynamic product feeds",
+      "Segmented the audience by purchase behavior and engagement score",
+    ],
+    results: [
+      { label: "Open rate", value: "+38%" },
+      { label: "Cart recovery", value: "2.4x" },
+      { label: "Manual work", value: "-60%" },
+    ],
+    tools: ["Klaviyo", "Shopify", "GA4", "Looker Studio"],
   },
   {
     title: "B2B Lead Nurture Architecture",
@@ -82,6 +103,19 @@ const projects = [
       "Custom CRM integration and automated messaging sequences that reduced manual data entry by 70%.",
     image: projectMessaging,
     alt: "Automated messaging flows shown on two phones",
+    overview:
+      "A custom CRM integration connecting form captures, enrichment and scoring to automated nurture sequences — so leads move without anyone touching a spreadsheet.",
+    highlights: [
+      "Built a bidirectional sync between web forms, CRM and email platform",
+      "Designed lead scoring that routes hot prospects to sales in real time",
+      "Automated a 6-step nurture sequence tailored to industry and role",
+    ],
+    results: [
+      { label: "Manual data entry", value: "-70%" },
+      { label: "Lead response time", value: "-85%" },
+      { label: "MQL to SQL", value: "+24%" },
+    ],
+    tools: ["HubSpot", "Zapier", "Salesforce", "Airtable"],
   },
   {
     title: "Automated Content Distribution",
@@ -89,6 +123,19 @@ const projects = [
       "Video-first content pipeline deploying campaigns across six platforms from a single workflow.",
     image: projectVideo,
     alt: "Video editing timeline on an ultrawide monitor",
+    overview:
+      "A video-first content engine that takes a single master asset and automatically versions, schedules and publishes it across six channels.",
+    highlights: [
+      "Single upload fans out to Instagram, TikTok, YouTube, LinkedIn and more",
+      "Auto-generated captions, aspect ratios and thumbnails per platform",
+      "Publishing calendar driven by a single no-code workflow",
+    ],
+    results: [
+      { label: "Publishing time", value: "-80%" },
+      { label: "Platforms covered", value: "6" },
+      { label: "Content output", value: "3x" },
+    ],
+    tools: ["Make", "Adobe Premiere Pro", "CapCut", "Notion"],
   },
 ];
 
@@ -120,6 +167,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [activeProject, setActiveProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
+
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       {/* Site navigation */}
@@ -306,15 +357,14 @@ function Index() {
                 <p className="mb-6 max-w-[48ch] text-sm text-pretty text-muted-foreground">
                   {project.description}
                 </p>
-                <a
-                  href={PROJECTS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1 text-sm font-medium underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(project)}
+                  className="mt-auto inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
                 >
                   View project
                   <ArrowUpRight className="size-4" />
-                </a>
+                </button>
               </div>
             ))}
           </div>
@@ -366,6 +416,110 @@ function Index() {
           </p>
         </div>
       </footer>
+
+      {/* Project detail modal */}
+      <Dialog
+        open={activeProject !== null}
+        onOpenChange={(open) => {
+          if (!open) setActiveProject(null);
+        }}
+      >
+        <DialogContent className="max-h-[90vh] gap-0 overflow-y-auto border-border bg-card p-0 sm:max-w-2xl">
+          {activeProject && (
+            <>
+              <div className="relative">
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.alt}
+                  width={944}
+                  height={704}
+                  className="aspect-[16/9] w-full rounded-t-xl object-cover"
+                />
+                <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
+              </div>
+
+              <div className="space-y-8 p-6 md:p-10">
+                <DialogHeader className="space-y-3 text-left">
+                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+                    Case study
+                  </span>
+                  <DialogTitle className="font-display text-3xl leading-tight md:text-4xl">
+                    {activeProject.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-base leading-relaxed text-muted-foreground">
+                    {activeProject.overview}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    What it involved
+                  </h4>
+                  <ul className="space-y-3">
+                    {activeProject.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-[7px] size-1.5 shrink-0 rounded-full bg-primary"
+                        />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    Results
+                  </h4>
+                  <div className="grid grid-cols-3 gap-4">
+                    {activeProject.results.map((result) => (
+                      <div
+                        key={result.label}
+                        className="rounded-lg border border-border bg-muted/50 p-4 text-center"
+                      >
+                        <p className="font-display text-2xl text-primary">
+                          {result.value}
+                        </p>
+                        <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                          {result.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
+                    Tools used
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {activeProject.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-full border border-border bg-muted px-3.5 py-1.5 text-sm text-muted-foreground"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  <Mail className="mr-2 size-4" />
+                  Ask me about this project
+                </a>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
