@@ -79,3 +79,16 @@
     font-family: var(--font-sans);
   }
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+@utility glow-primary {
+  box-shadow: 0 10px 40px -10px color-mix(in oklch, var(--color-primary) 70%, transparent);
+}

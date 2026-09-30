@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Megaphone, Share2, Search, Monitor, Video } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 
@@ -27,17 +27,17 @@ const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your pro
 /* ------------------------------------------------------------------------ */
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "Services", href: "#services" },
+  { label: "Past Projects", href: "#projects" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Tools", href: "#tools" },
   { label: "Contact", href: "#contact" },
 ];
 
 const experience = [
   // TODO: replace with your real roles, companies, dates and achievements
   {
-    role: "Marketing & Automation Specialist",
+    role: "GHL & Marketing Automation Specialist",
     company: "Freelance / Contract",
     period: "2023 — Present",
     description:
@@ -56,26 +56,6 @@ const experience = [
     period: "2019 — 2021",
     description:
       "Supported campaign operations and lead management, streamlining handoffs between creative, sales and analytics teams.",
-  },
-];
-
-const skillGroups = [
-  // TODO: adjust to your real stack
-  {
-    title: "Marketing Automation",
-    items: ["HubSpot", "Mailchimp", "Klaviyo", "ActiveCampaign", "Zapier", "Make"],
-  },
-  {
-    title: "CRM & Data",
-    items: ["Salesforce", "HubSpot CRM", "Airtable", "Notion", "Google Sheets", "SQL"],
-  },
-  {
-    title: "Analytics",
-    items: ["Google Analytics 4", "Looker Studio", "Meta Ads Manager", "Hotjar", "A/B Testing"],
-  },
-  {
-    title: "Content & Creative",
-    items: ["Adobe Premiere Pro", "CapCut", "Figma", "Canva", "Screenshot & Video Tutorials"],
   },
 ];
 
@@ -166,7 +146,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Glory Bobby Bassey — Marketing & Automation Specialist",
+        title: "Glory Bobby Bassey — GHL & Marketing Automation Specialist",
       },
       {
         name: "description",
@@ -175,7 +155,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Glory Bobby Bassey — Marketing & Automation Specialist",
+        content: "Glory Bobby Bassey — GHL & Marketing Automation Specialist",
       },
       {
         property: "og:description",
@@ -189,260 +169,366 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// Placeholder brand names for the "Trusted by" strip — swap for real client logos
+const clientLogos = ["Northwind", "Lumen & Co", "Brightpath", "Keystone", "Vela Studio", "Orbit Labs", "Harbor", "Crestline"];
+
+const services = [
+  { icon: Workflow, title: "GoHighLevel Setup", text: "Pipelines, calendars, workflows and reporting configured so every lead has a clear next step." },
+  { icon: Bot, title: "AI Automation", text: "Practical AI assistants and automations that remove repetitive tasks from your team's day." },
+  { icon: Filter, title: "Funnels & Landing Pages", text: "Conversion-focused pages that move a visitor from first click to booked call." },
+  { icon: Mail, title: "Email Marketing", text: "Segmented nurture, welcome and reactivation sequences that keep your list warm." },
+  { icon: Megaphone, title: "Paid Ads Support", text: "Campaign tracking and follow-up systems that make every ad dollar easier to measure." },
+  { icon: Share2, title: "Social Media", text: "Content planning and scheduling workflows that keep your brand consistently visible." },
+  { icon: Search, title: "SEO Foundations", text: "Technical and on-page improvements that help the right people find you." },
+  { icon: Monitor, title: "Website Builds", text: "Fast, responsive websites designed around your brand and your conversion goals." },
+  { icon: Video, title: "Video Editing", text: "Short-form edits, tutorials and screen recordings that explain and sell clearly." },
+];
+
+// TODO: replace with real case study numbers
+const caseStudies = [
+  { image: projectDashboard, title: "Lead Capture System", problem: "Lead flow was unpredictable and hard to track.", solution: "Built a GoHighLevel funnel with qualification questions and instant follow-up.", results: ["2x more qualified leads", "Follow-ups fully automated", "One dashboard for every source"] },
+  { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
+  { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
+  { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
+];
+
+const problems = [
+  "Funnels that don't convert",
+  "Leads slipping through the cracks",
+  "No automated follow-up",
+  "Hours lost to manual tasks",
+  "Messy CRM and pipelines",
+  "Too many disconnected tools",
+];
+
+const solutions = [
+  "High-converting funnels and websites",
+  "Automated SMS, email and workflow follow-ups",
+  "Clean, organised CRM pipelines",
+  "A smooth customer journey end to end",
+  "Time back to focus on growth",
+];
+
+// TODO: replace with real client testimonials
+const testimonials = [
+  { quote: "Glory set up our whole CRM and now no lead goes without a follow-up. It genuinely runs while we sleep.", name: "Client Name", role: "Founder, Placeholder Co." },
+  { quote: "Our booking funnel was rebuilt in weeks and the reminders alone cut our no-shows dramatically.", name: "Client Name", role: "Coach" },
+  { quote: "Everything used to be manual. Now it's organised, automated and easy for the team to follow.", name: "Client Name", role: "CEO" },
+  { quote: "Clear communication, fast delivery and systems that actually make sense. Highly recommended.", name: "Client Name", role: "Marketing Director" },
+  { quote: "The video tutorials Glory produced made onboarding our customers so much easier.", name: "Client Name", role: "Operations Lead" },
+  { quote: "Proactive, detail-oriented and always thinking about what drives results for the business.", name: "Client Name", role: "Business Owner" },
+];
+
+// Placeholder videos — swap for your own clips
+const videos = [
+  { src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", poster: projectVideo, title: "Product explainer" },
+  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", poster: projectDashboard, title: "Dashboard walkthrough" },
+  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: projectMessaging, title: "Automation tutorial" },
+  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
+];
+
+const techStack = ["GoHighLevel", "Zapier", "Make", "n8n", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Notion", "Airtable"];
+
+function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
+  return (
+    <div className="mx-auto mb-14 max-w-2xl text-center">
+      <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">{eyebrow}</span>
+      <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">{title}</h2>
+      {text && <p className="mt-4 text-lg text-muted-foreground">{text}</p>}
+    </div>
+  );
+}
+
+function CtaButton({ children, href = "#contact" }: { children: React.ReactNode; href?: string }) {
+  return (
+    <a href={href} className="glow-primary inline-flex items-center gap-2 rounded-2xl bg-primary px-7 py-4 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
+      {children} <ArrowRight className="size-4" />
+    </a>
+  );
+}
+
 function Index() {
-  const [activeProject, setActiveProject] = useState<
-    (typeof projects)[number] | null
-  >(null);
+  const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
-      {/* Site navigation */}
+    <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground">
+      {/* Nav */}
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-          <a
-            href="#top"
-            className="font-display text-xl leading-none tracking-tight"
-          >
-            GB<span className="text-primary">.</span>
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+          <a href="#top" className="text-lg font-bold">
+            Glory<span className="text-primary">Bassey</span>
           </a>
-          <div className="flex items-center gap-2 md:gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:px-4"
-              >
-                {link.label}
+          <div className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                {l.label}
               </a>
             ))}
           </div>
+          <a href="#projects" className="glow-primary rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground">
+            See My Systems
+          </a>
         </div>
       </nav>
 
       {/* Hero */}
-      <header id="top" className="relative flex h-screen w-full flex-col justify-end overflow-hidden p-6 md:p-12">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImg}
-            alt="Sunlit minimalist workspace with a laptop on an oak desk"
-            width={1920}
-            height={1080}
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
-        </div>
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl">
-          <h1 className="mb-4 font-display text-5xl leading-none text-foreground text-balance md:text-8xl lg:text-9xl">
-            Glory Bobby Bassey
-          </h1>
-          <p className="text-lg font-medium tracking-tight text-foreground/80 md:text-2xl">
-            GHL &amp; Marketing Automation Specialist
-          </p>
+      <header id="top" className="relative flex min-h-screen items-center pt-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/60 px-4 py-1.5 text-sm text-foreground/90">
+              <span className="size-2 animate-pulse rounded-full bg-accent" /> Available for Projects
+            </span>
+            <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+              Glory Bobby Bassey
+            </h1>
+            <p className="mt-4 text-2xl font-semibold text-primary md:text-3xl">GHL & Marketing Automation Specialist</p>
+            <p className="mt-6 max-w-lg text-lg text-foreground/85">
+              I build automated marketing systems that capture leads, follow up instantly and help your brand grow without extra manual work.
+            </p>
+            <p className="mt-4 max-w-lg text-muted-foreground">From funnels to CRM pipelines, I turn scattered processes into one smooth, predictable machine.</p>
+            <div className="mt-8">
+              <Reveal>
+                <CtaButton>Let's Work Together</CtaButton>
+              </Reveal>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">Usually responds within 24 hours</p>
+          </div>
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute inset-0 -z-10 scale-125 rounded-full bg-primary/25 blur-3xl" />
+            <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="aspect-[4/5] w-full rounded-[2rem] border border-border object-cover shadow-2xl" />
+          </div>
         </div>
       </header>
 
-      {/* About */}
-      <section id="about" className="bg-background px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid items-start gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <img
-                src={portraitUrl}
-                alt="Portrait of Glory Bobby Bassey"
-                className="aspect-[4/5] w-full rounded-xl object-cover shadow-lg ring-1 ring-border"
-              />
-            </div>
-            <div className="pt-4 lg:col-span-7">
-              <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
-                About me
-              </span>
-              <h2 className="mb-8 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
-                Transforming systems into scalable growth engines.
-              </h2>
-              <div className="max-w-[56ch] space-y-6 text-lg leading-relaxed text-pretty text-muted-foreground">
-                <p>
-                  I'm Glory — a marketing and automation specialist who bridges
-                  the gap between creative strategy and technical execution. I
-                  build automation frameworks that allow brands to communicate
-                  with precision at scale, turning complex funnels into seamless
-                  customer journeys.
-                </p>
-                <p>
-                  My approach combines data-driven insights with an editorial
-                  sensibility, so every automated touchpoint feels personal and
-                  high-value rather than mechanical. From email ecosystems to
-                  CRM integrations and content pipelines, I design systems that
-                  keep working while you sleep.
-                </p>
-              </div>
-              <Reveal className="mt-10 inline-block">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  Work with me
-                </a>
-              </Reveal>
-            </div>
+      {/* Trusted by */}
+      <section className="border-y border-border/50 py-14">
+        <p className="mb-8 text-center text-sm uppercase tracking-[0.25em] text-muted-foreground">Trusted by growing brands</p>
+        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
+          <div className="animate-marquee flex w-max gap-16">
+            {[...clientLogos, ...clientLogos].map((n, i) => (
+              <span key={i} className="whitespace-nowrap text-2xl font-bold text-foreground/40">{n}</span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Experience */}
-      <section id="experience" className="bg-secondary px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Experience
-          </span>
-          <h2 className="mb-16 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
-            Where I've built and shipped.
-          </h2>
-
-          <ol className="relative space-y-0 border-l border-border">
-            {experience.map((job) => (
-              <li key={job.role} className="relative pb-12 pl-8 last:pb-0 md:pl-12">
-                <span className="absolute -left-[7px] top-2 size-3.5 rounded-full border-2 border-primary bg-background" />
-                <p className="mb-1 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                  {job.period}
-                </p>
-                <h3 className="text-xl font-medium md:text-2xl">{job.role}</h3>
-                <p className="mb-3 text-sm font-medium text-primary">{job.company}</p>
-                <p className="max-w-[60ch] text-sm leading-relaxed text-pretty text-muted-foreground">
-                  {job.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Skills & tools */}
-      <section id="skills" className="bg-background px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Skills & tools
-          </span>
-          <h2 className="mb-16 font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
-            The stack behind the systems.
-          </h2>
-
-          <div className="grid gap-10 md:grid-cols-2">
-            {skillGroups.map((group) => (
-              <div key={group.title} className="rounded-xl border border-border bg-card p-6 md:p-8">
-                <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
-                  {group.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-border bg-muted px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+      {/* About */}
+      <section id="about" className="py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-[2fr_3fr]">
+          <img src={heroImg} alt="Workspace with laptop and marketing dashboards" className="aspect-square w-full rounded-3xl border border-border object-cover" />
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">About me</span>
+            <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Systems that work while you sleep</h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              I'm Glory — a marketing and automation specialist focused on GoHighLevel, CRM workflows and content that explains clearly. I help business owners stop chasing leads by hand and start running on organised, automated systems.
+            </p>
+            <div className="mt-8"><Reveal><CtaButton>Contact Me</CtaButton></Reveal></div>
           </div>
         </div>
       </section>
 
       {/* Projects */}
-      <section id="projects" className="bg-secondary px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex items-end justify-between">
-            <div>
-              <span className="mb-4 block text-xs font-medium uppercase tracking-[0.2em] text-primary">
-                Projects
-              </span>
-              <h2 className="font-display text-4xl leading-tight text-balance md:text-5xl lg:text-6xl">
-                Selected Works
-              </h2>
-            </div>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {projects.map((project, index) => (
-              <div key={project.title} className="group flex flex-col">
-                <div className="mb-6 overflow-hidden rounded-xl ring-1 ring-border">
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    width={944}
-                    height={704}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+      <section id="projects" className="py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading eyebrow="Past Projects" title="Selected work" text="Automation systems and builds I've delivered across different industries." />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {projects.map((p, i) => (
+              <article key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60">
+                <div className="overflow-hidden">
+                  <img src={p.image} alt={p.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <h3 className="mb-2 text-xl font-medium">{project.title}</h3>
-                <p className="mb-6 max-w-[48ch] text-sm text-pretty text-muted-foreground">
-                  {project.description}
-                </p>
-                <Reveal className="mt-auto inline-block" delay={index * 120}>
-                  <button
-                    type="button"
-                    onClick={() => setActiveProject(project)}
-                    className="inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
-                  >
-                    View project
-                    <ArrowUpRight className="size-4" />
-                  </button>
-                </Reveal>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-semibold">{p.title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.tools.slice(0, 3).map((t) => (
+                      <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{t}</span>
+                    ))}
+                  </div>
+                  <Reveal delay={i * 120} className="mt-5">
+                    <button onClick={() => setActiveProject(p)} className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                      See more <ArrowUpRight className="size-4" />
+                    </button>
+                  </Reveal>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="bg-secondary/60 py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading eyebrow="Services" title="How I can help" />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="rounded-2xl border border-border bg-card p-7 transition-transform hover:-translate-y-1">
+                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <Icon className="size-6" />
+                </div>
+                <h3 className="text-lg font-semibold">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case studies */}
+      <section id="case-studies" className="py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading eyebrow="Case Studies" title="Problems solved, results delivered" />
+          <div className="grid gap-8 md:grid-cols-2">
+            {caseStudies.map((c) => (
+              <article key={c.title} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
+                <div className="space-y-4 p-7">
+                  <h3 className="text-2xl font-semibold">{c.title}</h3>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-destructive">PROBLEM</p><p className="mt-1 text-muted-foreground">{c.problem}</p></div>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-muted-foreground">{c.solution}</p></div>
+                  <div>
+                    <p className="text-xs font-semibold tracking-[0.2em] text-primary">RESULTS</p>
+                    <ul className="mt-2 space-y-1.5">
+                      {c.results.map((r) => (
+                        <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-primary" />{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Big CTA */}
+      <section className="px-6 py-20">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-primary/40 bg-gradient-to-br from-primary/30 via-card to-background p-10 text-center md:p-16">
+          <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Build smart systems that grow your business on <span className="text-primary">autopilot</span></h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">Stop losing hours to manual tasks and missed leads. Let's turn your processes into a predictable, automated engine.</p>
+          <div className="mt-8"><CtaButton>Let's Grow Together</CtaButton></div>
+        </div>
+      </section>
+
+      {/* Problems / Solution */}
+      <section className="py-28">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-destructive">The problem</span>
+            <h3 className="mt-3 text-3xl font-bold">What holds businesses back</h3>
+            <ul className="mt-6 space-y-3">
+              {problems.map((p) => (<li key={p} className="flex items-center gap-3 text-muted-foreground"><X className="size-5 text-destructive" />{p}</li>))}
+            </ul>
+            <p className="mt-6 font-medium">You can't scale if everything depends on you doing it by hand.</p>
+          </div>
+          <div className="rounded-2xl border border-primary/50 bg-primary/10 p-8">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">The solution</span>
+            <h3 className="mt-3 text-3xl font-bold">Smart, automated systems</h3>
+            <ul className="mt-6 space-y-3">
+              {solutions.map((s) => (<li key={s} className="flex items-center gap-3"><Check className="size-5 text-primary" />{s}</li>))}
+            </ul>
+            <div className="mt-8"><CtaButton>Fix These Problems</CtaButton></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="bg-secondary/60 py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading eyebrow="Client Wins" title="What clients say" text="Predictable systems, better conversions and more time back." />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <figure key={i} className="flex flex-col rounded-2xl border border-border bg-card p-7">
+                <div className="flex gap-1 text-accent">{Array.from({ length: 5 }).map((_, s) => <Star key={s} className="size-4 fill-current" />)}</div>
+                <blockquote className="mt-4 flex-1 leading-relaxed text-foreground/90">"{t.quote}"</blockquote>
+                <figcaption className="mt-6"><p className="font-semibold">{t.name}</p><p className="text-xs uppercase tracking-wider text-muted-foreground">{t.role}</p></figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow integration */}
+      <section className="py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionHeading eyebrow="Integrations" title="Seamless workflow integration" text="Your business should keep running smoothly even when you're offline." />
+          <div className="grid gap-6 md:grid-cols-2">
+            {[{ name: "Zapier Automation", img: projectMessaging }, { name: "Make.com Automation", img: projectOnboarding }].map((w) => (
+              <div key={w.name} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <img src={w.img} alt={`${w.name} workflow placeholder`} className="aspect-video w-full object-cover" />
+                <p className="p-6 text-xl font-semibold">{w.name}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center"><CtaButton>Automate My Business</CtaButton></div>
+        </div>
+      </section>
+
+      {/* Videos */}
+      <section id="videos" className="bg-secondary/60 py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <SectionHeading eyebrow="Video" title="Engaging video content that converts" />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {videos.map((v) => (
+              <div key={v.title} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <video src={v.src} poster={v.poster} controls muted playsInline preload="none" className="aspect-[9/16] w-full bg-muted object-cover" />
+                <p className="p-4 text-sm font-medium">{v.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section id="experience" className="py-28">
+        <div className="mx-auto max-w-4xl px-6">
+          <SectionHeading eyebrow="Experience" title="Where I've worked" />
+          <div className="space-y-6">
+            {experience.map((e) => (
+              <div key={e.role + e.period} className="rounded-2xl border border-border bg-card p-7">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="text-xl font-semibold">{e.role}</h3>
+                  <span className="text-sm text-accent">{e.period}</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{e.company}</p>
+                <p className="mt-3 text-muted-foreground">{e.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech stack */}
+      <section id="tools" className="border-y border-border/50 py-24">
+        <SectionHeading eyebrow="Tools" title="My tech stack" text="Industry-leading tools I use to deliver results." />
+        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
+          <div className="animate-marquee flex w-max gap-5">
+            {[...techStack, ...techStack].map((t, i) => (
+              <span key={i} className="whitespace-nowrap rounded-2xl border border-border bg-card px-7 py-4 text-lg font-medium">{t}</span>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="bg-primary px-6 py-24 text-primary-foreground md:px-12 md:py-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center text-center">
-          <span className="mb-8 text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/70">
-            Available for new projects
-          </span>
-          <h2 className="mb-12 font-display text-5xl leading-none text-balance md:text-7xl lg:text-8xl">
-            Let's build something efficient.
-          </h2>
-          <Reveal className="inline-block">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
-            >
-              <Mail className="size-4" />
-              Send an inquiry
-            </a>
-          </Reveal>
+      <section id="contact" className="py-28">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <SectionHeading eyebrow="Contact" title="Let's build your system" text="Tell me what's slowing your business down and I'll show you how to automate it." />
+          <Reveal><CtaButton href={`mailto:${EMAIL}`}>Send an inquiry</CtaButton></Reveal>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-background px-6 py-12 md:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-          <a
-            href={`mailto:${EMAIL}`}
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            {EMAIL}
-          </a>
-          <div className="flex items-center gap-6">
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <Linkedin className="size-4" />
-              LinkedIn
-            </a>
+      <footer className="border-t border-border/50 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Glory Bobby Bassey</p>
+          <div className="flex items-center gap-5">
+            <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><Mail className="size-4" />{EMAIL}</a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary"><Linkedin className="size-5" /></a>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70">
-            &copy; 2026 Glory Bobby Bassey
-          </p>
         </div>
       </footer>
+
 
       {/* Project detail modal */}
       <Dialog
