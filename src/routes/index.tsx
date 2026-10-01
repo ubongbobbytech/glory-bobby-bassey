@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Megaphone, Share2, Search, Monitor, Video } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Monitor } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 
@@ -170,18 +170,15 @@ export const Route = createFileRoute("/")({
 });
 
 // Placeholder brand names for the "Trusted by" strip — swap for real client logos
-const clientLogos = ["Northwind", "Lumen & Co", "Brightpath", "Keystone", "Vela Studio", "Orbit Labs", "Harbor", "Crestline"];
+const clientLogos = ["Qui Support Solutions", "Pink3", "TotalReach", "Coach Razelle", "Han Group"];
 
 const services = [
   { icon: Workflow, title: "GoHighLevel Setup", text: "Pipelines, calendars, workflows and reporting configured so every lead has a clear next step." },
   { icon: Bot, title: "AI Automation", text: "Practical AI assistants and automations that remove repetitive tasks from your team's day." },
   { icon: Filter, title: "Funnels & Landing Pages", text: "Conversion-focused pages that move a visitor from first click to booked call." },
   { icon: Mail, title: "Email Marketing", text: "Segmented nurture, welcome and reactivation sequences that keep your list warm." },
-  { icon: Megaphone, title: "Paid Ads Support", text: "Campaign tracking and follow-up systems that make every ad dollar easier to measure." },
   { icon: Share2, title: "Social Media", text: "Content planning and scheduling workflows that keep your brand consistently visible." },
-  { icon: Search, title: "SEO Foundations", text: "Technical and on-page improvements that help the right people find you." },
   { icon: Monitor, title: "Website Builds", text: "Fast, responsive websites designed around your brand and your conversion goals." },
-  { icon: Video, title: "Video Editing", text: "Short-form edits, tutorials and screen recordings that explain and sell clearly." },
 ];
 
 // TODO: replace with real case study numbers
@@ -255,8 +252,9 @@ function Index() {
       {/* Nav */}
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-          <a href="#top" className="text-lg font-bold">
-            Glory<span className="text-primary">Bassey</span>
+          <a href="#top" className="flex items-center gap-3">
+            <span className="flex size-10 items-center justify-center rounded-xl bg-primary font-bold text-primary-foreground shadow-lg shadow-primary/30">GB</span>
+            <span className="text-lg font-bold">Glory<span className="text-primary">Bassey</span></span>
           </a>
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((l) => (
