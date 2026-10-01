@@ -170,7 +170,7 @@ export const Route = createFileRoute("/")({
 });
 
 // Placeholder brand names for the "Trusted by" strip — swap for real client logos
-const clientLogos = ["Qui Support Solutions", "Pink3", "TotalReach", "Coach Razelle", "Han Group"];
+const clientLogos = ["Qui Support Solutions", "Pink3", "Coach Razelle", "Marketing Mane"];
 
 const services = [
   { icon: Workflow, title: "GoHighLevel Setup", text: "Pipelines, calendars, workflows and reporting configured so every lead has a clear next step." },
