@@ -169,9 +169,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Placeholder brand names for the "Trusted by" strip — swap for real client logos
-const clientLogos = ["Qui Support Solutions", "Pink3", "Coach Razelle", "Marketing Mane"];
-
 const services = [
   { icon: Workflow, title: "GoHighLevel Setup", text: "Pipelines, calendars, workflows and reporting configured so every lead has a clear next step." },
   { icon: Bot, title: "AI Automation", text: "Practical AI assistants and automations that remove repetitive tasks from your team's day." },
@@ -224,7 +221,7 @@ const videos = [
   { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
 ];
 
-const techStack = ["GoHighLevel", "Zapier", "Make", "n8n", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Notion", "Airtable"];
+const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Google Workspace", "Airtable"];
 
 function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
   return (
@@ -254,7 +251,6 @@ function Index() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
           <a href="#top" className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-xl bg-primary font-bold text-primary-foreground shadow-lg shadow-primary/30">GB</span>
-            <span className="text-lg font-bold">Glory<span className="text-primary">Bassey</span></span>
           </a>
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((l) => (
