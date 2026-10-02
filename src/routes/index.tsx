@@ -169,9 +169,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Placeholder brand names for the "Trusted by" strip — swap for real client logos
-const clientLogos = ["Qui Support Solutions", "Pink3", "Coach Razelle", "Marketing Mane"];
-
 const services = [
   { icon: Workflow, title: "GoHighLevel Setup", text: "Pipelines, calendars, workflows and reporting configured so every lead has a clear next step." },
   { icon: Bot, title: "AI Automation", text: "Practical AI assistants and automations that remove repetitive tasks from your team's day." },
@@ -224,7 +221,7 @@ const videos = [
   { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
 ];
 
-const techStack = ["GoHighLevel", "Zapier", "Make", "n8n", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Notion", "Airtable"];
+const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Google Workspace", "Airtable"];
 
 function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
   return (
@@ -254,7 +251,6 @@ function Index() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
           <a href="#top" className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-xl bg-primary font-bold text-primary-foreground shadow-lg shadow-primary/30">GB</span>
-            <span className="text-lg font-bold">Glory<span className="text-primary">Bassey</span></span>
           </a>
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((l) => (
@@ -298,13 +294,13 @@ function Index() {
         </div>
       </header>
 
-      {/* Trusted by */}
-      <section className="border-y border-border/50 py-14">
-        <p className="mb-8 text-center text-sm uppercase tracking-[0.25em] text-muted-foreground">Trusted by growing brands</p>
+      {/* Tools */}
+      <section id="tools" className="border-y border-border/50 py-14">
+        <p className="mb-8 text-center text-sm uppercase tracking-[0.25em] text-muted-foreground">Tools I work with</p>
         <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-          <div className="animate-marquee flex w-max gap-16">
-            {[...clientLogos, ...clientLogos].map((n, i) => (
-              <span key={i} className="whitespace-nowrap text-2xl font-bold text-foreground/40">{n}</span>
+          <div className="animate-marquee flex w-max gap-5">
+            {[...techStack, ...techStack].map((t, i) => (
+              <span key={i} className="whitespace-nowrap rounded-2xl border border-border bg-card px-7 py-4 text-lg font-medium">{t}</span>
             ))}
           </div>
         </div>
@@ -492,18 +488,6 @@ function Index() {
                 <p className="text-sm text-muted-foreground">{e.company}</p>
                 <p className="mt-3 text-muted-foreground">{e.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tech stack */}
-      <section id="tools" className="border-y border-border/50 py-24">
-        <SectionHeading eyebrow="Tools" title="My tech stack" text="Industry-leading tools I use to deliver results." />
-        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-          <div className="animate-marquee flex w-max gap-5">
-            {[...techStack, ...techStack].map((t, i) => (
-              <span key={i} className="whitespace-nowrap rounded-2xl border border-border bg-card px-7 py-4 text-lg font-medium">{t}</span>
             ))}
           </div>
         </div>
