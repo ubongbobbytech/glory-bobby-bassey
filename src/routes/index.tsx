@@ -294,13 +294,13 @@ function Index() {
         </div>
       </header>
 
-      {/* Trusted by */}
-      <section className="border-y border-border/50 py-14">
-        <p className="mb-8 text-center text-sm uppercase tracking-[0.25em] text-muted-foreground">Trusted by growing brands</p>
+      {/* Tools */}
+      <section id="tools" className="border-y border-border/50 py-14">
+        <p className="mb-8 text-center text-sm uppercase tracking-[0.25em] text-muted-foreground">Tools I work with</p>
         <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-          <div className="animate-marquee flex w-max gap-16">
-            {[...clientLogos, ...clientLogos].map((n, i) => (
-              <span key={i} className="whitespace-nowrap text-2xl font-bold text-foreground/40">{n}</span>
+          <div className="animate-marquee flex w-max gap-5">
+            {[...techStack, ...techStack].map((t, i) => (
+              <span key={i} className="whitespace-nowrap rounded-2xl border border-border bg-card px-7 py-4 text-lg font-medium">{t}</span>
             ))}
           </div>
         </div>
