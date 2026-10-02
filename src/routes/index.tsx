@@ -493,18 +493,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Tech stack */}
-      <section id="tools" className="border-y border-border/50 py-24">
-        <SectionHeading eyebrow="Tools" title="My tech stack" text="Industry-leading tools I use to deliver results." />
-        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]">
-          <div className="animate-marquee flex w-max gap-5">
-            {[...techStack, ...techStack].map((t, i) => (
-              <span key={i} className="whitespace-nowrap rounded-2xl border border-border bg-card px-7 py-4 text-lg font-medium">{t}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact */}
       <section id="contact" className="py-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
