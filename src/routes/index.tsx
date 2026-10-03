@@ -17,6 +17,7 @@ import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
+import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
@@ -86,7 +87,7 @@ const projects = [
     title: "Coach Wendy Sales Funnel",
     description:
       "A complete sales funnel for Coach Wendy — lead capture, booking and automated follow-up that turns enquiries into enrolled clients.",
-    image: projectMessaging,
+    image: coachWendyPoster,
     alt: "Coach Wendy sales funnel walkthrough video",
     video: coachWendyVideo,
     overview:
@@ -97,11 +98,11 @@ const projects = [
       "Connected the calendar, CRM and pipeline so booked calls appear with no manual entry",
     ],
     results: [
-      { label: "Enquiry to booked call", value: "+45%" },
+      { label: "Sales on launch day", value: "10" },
       { label: "Follow-up speed", value: "<5 min" },
       { label: "Manual steps", value: "0" },
     ],
-    tools: ["GoHighLevel", "Zapier", "Calendly", "Twilio"],
+    tools: ["GoHighLevel"],
   },
   {
     title: "Automated Content Distribution",
