@@ -98,11 +98,11 @@ const projects = [
       "Connected the calendar, CRM and pipeline so booked calls appear with no manual entry",
     ],
     results: [
-      { label: "Enquiry to booked call", value: "+45%" },
+      { label: "Sales on launch day", value: "10" },
       { label: "Follow-up speed", value: "<5 min" },
       { label: "Manual steps", value: "0" },
     ],
-    tools: ["GoHighLevel", "Zapier", "Calendly", "Twilio"],
+    tools: ["GoHighLevel"],
   },
   {
     title: "Automated Content Distribution",
