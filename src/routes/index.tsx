@@ -18,8 +18,10 @@ import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
+import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 const portraitUrl = gloryAsset.url;
+const coachWendyVideo = coachWendyAsset.url;
 
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
@@ -81,24 +83,25 @@ const projects = [
     tools: ["Klaviyo", "Shopify", "GA4", "Looker Studio"],
   },
   {
-    title: "B2B Lead Nurture Architecture",
+    title: "Coach Wendy Sales Funnel",
     description:
-      "Custom CRM integration and automated messaging sequences that reduced manual data entry by 70%.",
+      "A complete sales funnel for Coach Wendy — lead capture, booking and automated follow-up that turns enquiries into enrolled clients.",
     image: projectMessaging,
-    alt: "Automated messaging flows shown on two phones",
+    alt: "Coach Wendy sales funnel walkthrough video",
+    video: coachWendyVideo,
     overview:
-      "A custom CRM integration connecting form captures, enrichment and scoring to automated nurture sequences — so leads move without anyone touching a spreadsheet.",
+      "A full sales funnel built for Coach Wendy: a high-converting opt-in page, automated email and SMS follow-up, and a booking flow that moves warm enquiries all the way through to a paid coaching client.",
     highlights: [
-      "Built a bidirectional sync between web forms, CRM and email platform",
-      "Designed lead scoring that routes hot prospects to sales in real time",
-      "Automated a 6-step nurture sequence tailored to industry and role",
+      "Built the opt-in and application pages around one clear offer",
+      "Automated the follow-up sequence across email and SMS until every lead is booked",
+      "Connected the calendar, CRM and pipeline so booked calls appear with no manual entry",
     ],
     results: [
-      { label: "Manual data entry", value: "-70%" },
-      { label: "Lead response time", value: "-85%" },
-      { label: "MQL to SQL", value: "+24%" },
+      { label: "Enquiry to booked call", value: "+45%" },
+      { label: "Follow-up speed", value: "<5 min" },
+      { label: "Manual steps", value: "0" },
     ],
-    tools: ["HubSpot", "Zapier", "Salesforce", "Airtable"],
+    tools: ["GoHighLevel", "Zapier", "Calendly", "Twilio"],
   },
   {
     title: "Automated Content Distribution",
@@ -328,8 +331,20 @@ function Index() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {projects.map((p, i) => (
               <article key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60">
-                <div className="overflow-hidden">
-                  <img src={p.image} alt={p.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="overflow-hidden bg-black">
+                  {p.video ? (
+                    <video
+                      src={p.video}
+                      poster={p.image}
+                      controls
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  ) : (
+                    <img src={p.image} alt={p.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
@@ -522,15 +537,29 @@ function Index() {
         <DialogContent className="max-h-[90vh] gap-0 overflow-y-auto border-border bg-card p-0 sm:max-w-2xl">
           {activeProject && (
             <>
-              <div className="relative">
-                <img
-                  src={activeProject.image}
-                  alt={activeProject.alt}
-                  width={944}
-                  height={704}
-                  className="aspect-[16/9] w-full rounded-t-xl object-cover"
-                />
-                <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
+              <div className="relative bg-black">
+                {activeProject.video ? (
+                  <video
+                    src={activeProject.video}
+                    poster={activeProject.image}
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="aspect-[16/9] w-full rounded-t-xl object-cover"
+                  />
+                ) : (
+                  <img
+                    src={activeProject.image}
+                    alt={activeProject.alt}
+                    width={944}
+                    height={704}
+                    className="aspect-[16/9] w-full rounded-t-xl object-cover"
+                  />
+                )}
+                {!activeProject.video && (
+                  <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
+                )}
               </div>
 
               <div className="space-y-8 p-6 md:p-10">
