@@ -217,13 +217,6 @@ const testimonials = [
   { quote: "Proactive, detail-oriented and always thinking about what drives results for the business.", name: "Client Name", role: "Business Owner" },
 ];
 
-// Placeholder videos — swap for your own clips
-const videos = [
-  { src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", poster: projectVideo, title: "Product explainer" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", poster: projectDashboard, title: "Dashboard walkthrough" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: projectMessaging, title: "Automation tutorial" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
-];
 
 const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Slack", "Airtable", "Monday.com", "Trello", "Google Workspace", "Claude", "ChatGPT", "Lovable", "SendGrid"];
 
