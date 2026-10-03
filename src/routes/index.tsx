@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Monitor } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 
@@ -179,7 +179,7 @@ const services = [
   { icon: Filter, title: "Funnels & Landing Pages", text: "Conversion-focused pages that move a visitor from first click to booked call." },
   { icon: Mail, title: "Email Marketing", text: "Segmented nurture, welcome and reactivation sequences that keep your list warm." },
   { icon: Share2, title: "Social Media", text: "Content planning and scheduling workflows that keep your brand consistently visible." },
-  { icon: Monitor, title: "Website Builds", text: "Fast, responsive websites designed around your brand and your conversion goals." },
+  { icon: Sparkles, title: "Smart AI Agents", text: "Custom AI agents that answer leads, qualify enquiries and book calls on autopilot." },
 ];
 
 // TODO: replace with real case study numbers
@@ -225,7 +225,7 @@ const videos = [
   { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
 ];
 
-const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Google Workspace", "Airtable"];
+const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Slack", "Airtable", "Monday.com", "Trello", "Google Workspace", "Claude", "ChatGPT", "Lovable", "SendGrid"];
 
 function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
   return (
