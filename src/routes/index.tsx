@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Monitor } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 
@@ -179,7 +179,7 @@ const services = [
   { icon: Filter, title: "Funnels & Landing Pages", text: "Conversion-focused pages that move a visitor from first click to booked call." },
   { icon: Mail, title: "Email Marketing", text: "Segmented nurture, welcome and reactivation sequences that keep your list warm." },
   { icon: Share2, title: "Social Media", text: "Content planning and scheduling workflows that keep your brand consistently visible." },
-  { icon: Monitor, title: "Website Builds", text: "Fast, responsive websites designed around your brand and your conversion goals." },
+  { icon: Sparkles, title: "Smart AI Agents", text: "Custom AI agents that answer leads, qualify enquiries and book calls on autopilot." },
 ];
 
 // TODO: replace with real case study numbers
@@ -217,15 +217,8 @@ const testimonials = [
   { quote: "Proactive, detail-oriented and always thinking about what drives results for the business.", name: "Client Name", role: "Business Owner" },
 ];
 
-// Placeholder videos — swap for your own clips
-const videos = [
-  { src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", poster: projectVideo, title: "Product explainer" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", poster: projectDashboard, title: "Dashboard walkthrough" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: projectMessaging, title: "Automation tutorial" },
-  { src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: projectOnboarding, title: "Short-form ad edit" },
-];
 
-const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Mailchimp", "ClickUp", "Slack", "WordPress", "Canva", "Google Workspace", "Airtable"];
+const techStack = ["GoHighLevel", "Zapier", "Make", "HubSpot", "Slack", "Airtable", "Monday.com", "Trello", "Google Workspace", "Claude", "ChatGPT", "Lovable", "SendGrid"];
 
 function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text?: string }) {
   return (
@@ -472,21 +465,6 @@ function Index() {
             ))}
           </div>
           <div className="mt-10 text-center"><CtaButton>Automate My Business</CtaButton></div>
-        </div>
-      </section>
-
-      {/* Videos */}
-      <section id="videos" className="bg-secondary/60 py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Video" title="Engaging video content that converts" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {videos.map((v) => (
-              <div key={v.title} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <video src={v.src} poster={v.poster} controls muted playsInline preload="none" className="aspect-[9/16] w-full bg-muted object-cover" />
-                <p className="p-4 text-sm font-medium">{v.title}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
