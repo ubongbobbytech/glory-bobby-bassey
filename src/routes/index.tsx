@@ -468,21 +468,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Videos */}
-      <section id="videos" className="bg-secondary/60 py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Video" title="Engaging video content that converts" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {videos.map((v) => (
-              <div key={v.title} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <video src={v.src} poster={v.poster} controls muted playsInline preload="none" className="aspect-[9/16] w-full bg-muted object-cover" />
-                <p className="p-4 text-sm font-medium">{v.title}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Experience */}
       <section id="experience" className="py-28">
         <div className="mx-auto max-w-4xl px-6">
