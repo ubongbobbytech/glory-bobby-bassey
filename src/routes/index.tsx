@@ -17,6 +17,7 @@ import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
+import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
