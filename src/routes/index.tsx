@@ -87,7 +87,7 @@ const projects = [
     title: "Coach Wendy Sales Funnel",
     description:
       "A complete sales funnel for Coach Wendy — lead capture, booking and automated follow-up that turns enquiries into enrolled clients.",
-    image: projectMessaging,
+    image: coachWendyPoster,
     alt: "Coach Wendy sales funnel walkthrough video",
     video: coachWendyVideo,
     overview:
