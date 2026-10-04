@@ -110,20 +110,20 @@ const projects = [
     tools: ["GoHighLevel"],
   },
   {
-    title: "Real Estate Video Project",
+    title: "Real Estate Sales Funnel",
     description:
-      "A real estate project video highlighting work for the property industry.",
+      "A GoHighLevel sales funnel for the real estate industry, shown in a project walkthrough.",
     image: realEstateImage,
     alt: "Contemporary residential property representing the real estate project video",
     embed: realEstateVideo,
     overview:
-      "A real estate industry project presented in the video. Watch the walkthrough to explore the work in context.",
+      "A walkthrough of a real estate sales funnel in GoHighLevel. Watch the video to see the project in context.",
     highlights: [
-      "Project in the real estate industry",
-      "Watch the project video for a closer look",
+      "Real estate sales funnel walkthrough",
+      "Built in GoHighLevel",
     ],
     results: [],
-    tools: [],
+    tools: ["GoHighLevel"],
   },
   {
     title: "Client Onboarding Automation",
