@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
+import { Button } from "@/components/ui/button";
 
 import {
   Dialog,
@@ -16,6 +17,7 @@ import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
+import realEstateImage from "@/assets/real-estate-project.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
@@ -23,6 +25,9 @@ import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 const portraitUrl = gloryAsset.url;
 const coachWendyVideo = coachWendyAsset.url;
+const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
+const realEstateVideo = `https://drive.google.com/file/d/${realEstateDriveId}/preview`;
+const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
 
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
@@ -105,24 +110,20 @@ const projects = [
     tools: ["GoHighLevel"],
   },
   {
-    title: "Automated Content Distribution",
+    title: "Real Estate Sales Funnel",
     description:
-      "Video-first content pipeline deploying campaigns across six platforms from a single workflow.",
-    image: projectVideo,
-    alt: "Video editing timeline on an ultrawide monitor",
+      "A GoHighLevel sales funnel for the real estate industry, shown in a project walkthrough.",
+    image: realEstateImage,
+    alt: "Contemporary residential property representing the real estate project video",
+    embed: realEstateVideo,
     overview:
-      "A video-first content engine that takes a single master asset and automatically versions, schedules and publishes it across six channels.",
+      "A walkthrough of a real estate sales funnel in GoHighLevel. Watch the video to see the project in context.",
     highlights: [
-      "Single upload fans out to Instagram, TikTok, YouTube, LinkedIn and more",
-      "Auto-generated captions, aspect ratios and thumbnails per platform",
-      "Publishing calendar driven by a single no-code workflow",
+      "Real estate sales funnel walkthrough",
+      "Built in GoHighLevel",
     ],
-    results: [
-      { label: "Publishing time", value: "-80%" },
-      { label: "Platforms covered", value: "6" },
-      { label: "Content output", value: "3x" },
-    ],
-    tools: ["Make", "Adobe Premiere Pro", "CapCut", "Notion"],
+    results: [],
+    tools: ["GoHighLevel"],
   },
   {
     title: "Client Onboarding Automation",
@@ -232,9 +233,7 @@ function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: Reac
 
 function CtaButton({ children, href = "#contact" }: { children: React.ReactNode; href?: string }) {
   return (
-    <a href={href} className="glow-primary inline-flex items-center gap-2 rounded-2xl bg-primary px-7 py-4 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
-      {children} <ArrowRight className="size-4" />
-    </a>
+    <Button asChild size="lg" className="glow-primary h-12 rounded-sm px-7 font-medium"><a href={href}>{children} <ArrowRight className="size-4" /></a></Button>
   );
 }
 
@@ -244,10 +243,10 @@ function Index() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground">
       {/* Nav */}
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-md">
+      <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
           <a href="#top" className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-xl bg-primary font-bold text-primary-foreground shadow-lg shadow-primary/30">GB</span>
+            <span className="flex size-10 items-center justify-center rounded-sm bg-espresso font-bold text-espresso-foreground">GB</span>
           </a>
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((l) => (
@@ -256,40 +255,36 @@ function Index() {
               </a>
             ))}
           </div>
-          <a href="#projects" className="glow-primary rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground">
-            See My Systems
-          </a>
+          <Button asChild variant="outline" className="rounded-sm border-foreground bg-background px-5 font-medium"><a href="#projects">See My Systems <ArrowUpRight className="size-4" /></a></Button>
         </div>
       </nav>
 
       {/* Hero */}
-      <header id="top" className="relative flex min-h-screen items-center pt-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/60 px-4 py-1.5 text-sm text-foreground/90">
-              <span className="size-2 animate-pulse rounded-full bg-accent" /> Available for Projects
-            </span>
-            <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-              Glory Bobby Bassey
-            </h1>
-            <p className="mt-4 text-2xl font-semibold text-primary md:text-3xl">GHL & Marketing Automation Specialist</p>
-            <p className="mt-6 max-w-lg text-lg text-foreground/85">
-              I build automated marketing systems that capture leads, follow up instantly and help your brand grow without extra manual work.
-            </p>
+      <header id="top" className="bg-background">
+        <div className="mx-auto grid max-w-7xl items-stretch px-6 md:min-h-[620px] md:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col justify-center py-16 pr-0 md:py-20 md:pr-12">
+            <span className="text-xs font-semibold uppercase text-accent">Available for Projects</span>
+            <h1 className="mt-8 max-w-xl text-5xl font-bold leading-[1.06] md:text-6xl lg:text-7xl">Glory Bobby <span className="text-accent">Bassey.</span></h1>
+            <p className="mt-6 max-w-xl text-2xl font-semibold text-foreground md:text-3xl">GHL & Marketing Automation Specialist</p>
+            <p className="mt-6 max-w-lg text-lg text-foreground/85">I build automated marketing systems that capture leads, follow up instantly and help your brand grow without extra manual work.</p>
             <p className="mt-4 max-w-lg text-muted-foreground">From funnels to CRM pipelines, I turn scattered processes into one smooth, predictable machine.</p>
-            <div className="mt-8">
-              <Reveal>
-                <CtaButton>Let's Work Together</CtaButton>
-              </Reveal>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Reveal><CtaButton>Let's Work Together</CtaButton></Reveal>
+              <Button asChild variant="outline" size="lg" className="h-12 rounded-sm border-foreground bg-background px-7 font-medium"><a href="#projects">See My Work <ArrowUpRight className="size-4" /></a></Button>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">Usually responds within 24 hours</p>
+            <p className="mt-5 text-sm text-muted-foreground">Usually responds within 24 hours</p>
           </div>
-          <div className="relative mx-auto w-full max-w-md">
-            <div className="absolute inset-0 -z-10 scale-125 rounded-full bg-primary/25 blur-3xl" />
-            <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="aspect-[4/5] w-full rounded-[2rem] border border-border object-cover shadow-2xl" />
+          <div className="relative min-h-[430px] overflow-hidden bg-espresso md:min-h-[620px]">
+            <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="absolute inset-0 h-full w-full object-cover object-top" />
           </div>
         </div>
       </header>
+
+      <section aria-label="Marketing automation process" className="bg-espresso py-8 text-espresso-foreground">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-3 px-6 text-center text-sm font-semibold uppercase sm:text-base">
+          {["Lead capture", "CRM", "Automation", "Follow-up"].map((step, i) => <span key={step} className="flex items-center gap-4">{i > 0 && <ArrowRight aria-hidden="true" className="size-4 text-accent" />}{step}</span>)}
+        </div>
+      </section>
 
       {/* Tools */}
       <section id="tools" className="border-y border-border/50 py-14">
@@ -324,8 +319,8 @@ function Index() {
           <SectionHeading eyebrow="Past Projects" title="Selected work" text="Automation systems and builds I've delivered across different industries." />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {projects.map((p, i) => (
-              <article key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60">
-                <div className="overflow-hidden bg-black">
+              <article key={p.title} className="group flex flex-col overflow-hidden rounded-md bg-espresso text-espresso-foreground transition-transform hover:-translate-y-1">
+                <div className="overflow-hidden bg-espresso">
                   {p.video ? (
                     <video
                       src={p.video}
@@ -337,21 +332,21 @@ function Index() {
                       className="aspect-[4/3] w-full object-cover"
                     />
                   ) : (
-                    <img src={p.image} alt={p.alt} className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={p.image} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.description}</p>
+                  <p className="mt-2 flex-1 text-sm text-espresso-foreground/75">{p.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {p.tools.slice(0, 3).map((t) => (
-                      <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{t}</span>
+                      <span key={t} className="rounded-sm border border-espresso-foreground/30 px-3 py-1 text-xs text-espresso-foreground/80">{t}</span>
                     ))}
                   </div>
                   <Reveal delay={i * 120} className="mt-5">
-                    <button onClick={() => setActiveProject(p)} className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+                    <Button variant="link" onClick={() => setActiveProject(p)} className="h-auto justify-start p-0 text-sm font-medium text-espresso-foreground hover:text-accent">
                       See more <ArrowUpRight className="size-4" />
-                    </button>
+                    </Button>
                   </Reveal>
                 </div>
               </article>
@@ -384,17 +379,17 @@ function Index() {
           <SectionHeading eyebrow="Case Studies" title="Problems solved, results delivered" />
           <div className="grid gap-8 md:grid-cols-2">
             {caseStudies.map((c) => (
-              <article key={c.title} className="overflow-hidden rounded-2xl border border-border bg-card">
+              <article key={c.title} className="overflow-hidden rounded-md bg-espresso text-espresso-foreground">
                 <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
                 <div className="space-y-4 p-7">
                   <h3 className="text-2xl font-semibold">{c.title}</h3>
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-destructive">PROBLEM</p><p className="mt-1 text-muted-foreground">{c.problem}</p></div>
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-muted-foreground">{c.solution}</p></div>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-espresso-foreground/75">{c.solution}</p></div>
                   <div>
-                    <p className="text-xs font-semibold tracking-[0.2em] text-primary">RESULTS</p>
+                    <p className="text-xs font-semibold tracking-[0.2em] text-accent">RESULTS</p>
                     <ul className="mt-2 space-y-1.5">
                       {c.results.map((r) => (
-                        <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-primary" />{r}</li>
+                        <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-accent" />{r}</li>
                       ))}
                     </ul>
                   </div>
@@ -407,10 +402,10 @@ function Index() {
 
       {/* Big CTA */}
       <section className="px-6 py-20">
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-primary/40 bg-gradient-to-br from-primary/30 via-card to-background p-10 text-center md:p-16">
+        <div className="relative mx-auto max-w-6xl overflow-hidden bg-espresso p-10 text-center text-espresso-foreground md:p-16">
           <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Build smart systems that grow your business on <span className="text-primary">autopilot</span></h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">Stop losing hours to manual tasks and missed leads. Let's turn your processes into a predictable, automated engine.</p>
-          <div className="mt-8"><CtaButton>Let's Grow Together</CtaButton></div>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-espresso-foreground/75">Stop losing hours to manual tasks and missed leads. Let's turn your processes into a predictable, automated engine.</p>
+          <div className="mt-8"><Button asChild variant="secondary" size="lg" className="h-12 rounded-sm px-7"><a href="#contact">Let's Grow Together <ArrowRight className="size-4" /></a></Button></div>
         </div>
       </section>
 
@@ -495,12 +490,12 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border/50 py-10">
+      <footer className="border-t border-border/50 bg-espresso py-10 text-espresso-foreground">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Glory Bobby Bassey</p>
+          <p className="text-sm text-espresso-foreground/70">© {new Date().getFullYear()} Glory Bobby Bassey</p>
           <div className="flex items-center gap-5">
-            <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><Mail className="size-4" />{EMAIL}</a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary"><Linkedin className="size-5" /></a>
+            <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 text-sm text-espresso-foreground/75 hover:text-espresso-foreground"><Mail className="size-4" />{EMAIL}</a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-espresso-foreground/75 hover:text-espresso-foreground"><Linkedin className="size-5" /></a>
           </div>
         </div>
       </footer>
@@ -516,8 +511,10 @@ function Index() {
         <DialogContent className="max-h-[90vh] gap-0 overflow-y-auto border-border bg-card p-0 sm:max-w-2xl">
           {activeProject && (
             <>
-              <div className="relative bg-black">
-                {activeProject.video ? (
+              <div className="relative bg-espresso">
+                {"embed" in activeProject && activeProject.embed ? (
+                  <iframe src={activeProject.embed} title={`${activeProject.title} video`} allow="autoplay; fullscreen" allowFullScreen className="aspect-video w-full" />
+                ) : activeProject.video ? (
                   <video
                     src={activeProject.video}
                     poster={activeProject.image}
@@ -536,7 +533,7 @@ function Index() {
                     className="aspect-[16/9] w-full rounded-t-xl object-cover"
                   />
                 )}
-                {!activeProject.video && (
+                {!activeProject.video && !("embed" in activeProject && activeProject.embed) && (
                   <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
                 )}
               </div>
@@ -574,7 +571,7 @@ function Index() {
                   </ul>
                 </div>
 
-                <div>
+                {activeProject.results.length > 0 && <div>
                   <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
                     Results
                   </h4>
@@ -593,9 +590,9 @@ function Index() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div>}
 
-                <div>
+                {activeProject.tools.length > 0 && <div>
                   <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
                     Tools used
                   </h4>
@@ -609,15 +606,11 @@ function Index() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </div>}
 
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  <Mail className="mr-2 size-4" />
-                  Ask me about this project
-                </a>
+                {"embed" in activeProject && activeProject.embed && <a href={realEstateLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-primary underline">Open video in Google Drive <ArrowUpRight className="size-4" /></a>}
+
+                <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
               </div>
             </>
           )}

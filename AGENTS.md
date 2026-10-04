@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep externally hosted portfolio videos as project-level preview links with an open-source fallback, so visitors can still reach media when inline playback is unavailable.
