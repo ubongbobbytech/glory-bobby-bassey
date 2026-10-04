@@ -319,7 +319,7 @@ function Index() {
           <SectionHeading eyebrow="Past Projects" title="Selected work" text="Automation systems and builds I've delivered across different industries." />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {projects.map((p, i) => (
-              <article key={p.title} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/60">
+              <article key={p.title} className="group flex flex-col overflow-hidden rounded-md bg-espresso text-espresso-foreground transition-transform hover:-translate-y-1">
                 <div className="overflow-hidden bg-espresso">
                   {p.video ? (
                     <video
@@ -337,14 +337,14 @@ function Index() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.description}</p>
+                  <p className="mt-2 flex-1 text-sm text-espresso-foreground/75">{p.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {p.tools.slice(0, 3).map((t) => (
-                      <span key={t} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{t}</span>
+                      <span key={t} className="rounded-sm border border-espresso-foreground/30 px-3 py-1 text-xs text-espresso-foreground/80">{t}</span>
                     ))}
                   </div>
                   <Reveal delay={i * 120} className="mt-5">
-                    <Button variant="link" onClick={() => setActiveProject(p)} className="h-auto justify-start p-0 text-sm font-medium text-primary">
+                    <Button variant="link" onClick={() => setActiveProject(p)} className="h-auto justify-start p-0 text-sm font-medium text-espresso-foreground hover:text-accent">
                       See more <ArrowUpRight className="size-4" />
                     </Button>
                   </Reveal>
@@ -379,17 +379,17 @@ function Index() {
           <SectionHeading eyebrow="Case Studies" title="Problems solved, results delivered" />
           <div className="grid gap-8 md:grid-cols-2">
             {caseStudies.map((c) => (
-              <article key={c.title} className="overflow-hidden rounded-2xl border border-border bg-card">
+              <article key={c.title} className="overflow-hidden rounded-md bg-espresso text-espresso-foreground">
                 <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
                 <div className="space-y-4 p-7">
                   <h3 className="text-2xl font-semibold">{c.title}</h3>
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-destructive">PROBLEM</p><p className="mt-1 text-muted-foreground">{c.problem}</p></div>
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-muted-foreground">{c.solution}</p></div>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>
+                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-espresso-foreground/75">{c.solution}</p></div>
                   <div>
-                    <p className="text-xs font-semibold tracking-[0.2em] text-primary">RESULTS</p>
+                    <p className="text-xs font-semibold tracking-[0.2em] text-accent">RESULTS</p>
                     <ul className="mt-2 space-y-1.5">
                       {c.results.map((r) => (
-                        <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-primary" />{r}</li>
+                        <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-accent" />{r}</li>
                       ))}
                     </ul>
                   </div>
