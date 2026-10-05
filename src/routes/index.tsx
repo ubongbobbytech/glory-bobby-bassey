@@ -206,8 +206,8 @@ const caseStudies = [
   { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
   { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
   { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
-  { image: projectOnboarding, title: "Task Management in Airtable", problem: "Keeping tasks organised and visible across a workflow.", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
-  { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "Leads need relevant replies and the right next link.", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
+  { image: projectOnboarding, title: "Task Management in Airtable", problem: "", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
+  { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
 
 const problems = [
@@ -399,10 +399,14 @@ function Index() {
           <div className="grid gap-8 md:grid-cols-2">
             {caseStudies.map((c) => (
               <article key={c.title} className="overflow-hidden rounded-md bg-espresso text-espresso-foreground">
-                <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
+                 {"videoLink" in c && c.videoLink ? (
+                   <iframe src={drivePreview(c.videoLink)} title={`${c.title} video walkthrough`} loading="lazy" allow="autoplay; fullscreen" allowFullScreen className="aspect-video w-full border-0" />
+                 ) : (
+                   <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
+                 )}
                 <div className="space-y-4 p-7">
                   <h3 className="text-2xl font-semibold">{c.title}</h3>
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>
+                   {c.problem && <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>}
                   <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-espresso-foreground/75">{c.solution}</p></div>
                    {c.results.length > 0 && <div>
                     <p className="text-xs font-semibold tracking-[0.2em] text-accent">RESULTS</p>
