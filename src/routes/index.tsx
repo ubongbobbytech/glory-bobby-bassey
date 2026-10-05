@@ -28,6 +28,10 @@ const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateVideo = `https://drive.google.com/file/d/${realEstateDriveId}/preview`;
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
+const leadSegmentationLink = "https://drive.google.com/file/d/1WxUpzoAilg-xQ-qBhM09OnpHl6jjmaW9/view";
+const airtableTaskLink = "https://drive.google.com/file/d/1nqkrdUbx-9mx9DQktPdBmx2lpciSlSn6/view";
+const conversationAiLink = "https://drive.google.com/file/d/13y6NF7OHD8uMXas_vGvBDgXMI76rO-kP/view";
+const drivePreview = (link: string) => link.replace(/\/view$/, "/preview");
 
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
@@ -116,6 +120,7 @@ const projects = [
     image: realEstateImage,
     alt: "Contemporary residential property representing the real estate project video",
     embed: realEstateVideo,
+    videoLink: realEstateLink,
     overview:
       "A walkthrough of a real estate sales funnel in GoHighLevel. Watch the video to see the project in context.",
     highlights: [
@@ -124,6 +129,18 @@ const projects = [
     ],
     results: [],
     tools: ["GoHighLevel"],
+  },
+  {
+    title: "Lead Segmentation in Make.com",
+    description: "A lead segmentation automation created in Make.com, shown in a project walkthrough.",
+    image: projectMessaging,
+    alt: "Automation workflow illustration for the lead segmentation project",
+    embed: drivePreview(leadSegmentationLink),
+    videoLink: leadSegmentationLink,
+    overview: "A walkthrough of a lead segmentation project created in Make.com. Watch the video to see the automation in context.",
+    highlights: ["Lead segmentation workflow", "Created in Make.com"],
+    results: [],
+    tools: ["Make.com"],
   },
   {
     title: "Client Onboarding Automation",
@@ -189,6 +206,8 @@ const caseStudies = [
   { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
   { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
   { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
+  { image: projectOnboarding, title: "Task Management in Airtable", problem: "Keeping tasks organised and visible across a workflow.", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
+  { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "Leads need relevant replies and the right next link.", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
 
 const problems = [
@@ -317,7 +336,7 @@ function Index() {
       <section id="projects" className="py-28">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHeading eyebrow="Past Projects" title="Selected work" text="Automation systems and builds I've delivered across different industries." />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((p, i) => (
               <article key={p.title} className="group flex flex-col overflow-hidden rounded-md bg-espresso text-espresso-foreground transition-transform hover:-translate-y-1">
                 <div className="overflow-hidden bg-espresso">
@@ -385,14 +404,19 @@ function Index() {
                   <h3 className="text-2xl font-semibold">{c.title}</h3>
                   <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>
                   <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-espresso-foreground/75">{c.solution}</p></div>
-                  <div>
+                   {c.results.length > 0 && <div>
                     <p className="text-xs font-semibold tracking-[0.2em] text-accent">RESULTS</p>
                     <ul className="mt-2 space-y-1.5">
                       {c.results.map((r) => (
                         <li key={r} className="flex items-center gap-2 text-sm"><Check className="size-4 text-accent" />{r}</li>
                       ))}
                     </ul>
-                  </div>
+                   </div>}
+                   {"videoLink" in c && c.videoLink && (
+                     <Button asChild variant="link" className="h-auto p-0 text-espresso-foreground underline underline-offset-4 hover:text-accent">
+                       <a href={c.videoLink} target="_blank" rel="noopener noreferrer">Watch walkthrough <ArrowUpRight className="size-4" /></a>
+                     </Button>
+                   )}
                 </div>
               </article>
             ))}
@@ -608,7 +632,7 @@ function Index() {
                   </div>
                 </div>}
 
-                {"embed" in activeProject && activeProject.embed && <a href={realEstateLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-primary underline">Open video in Google Drive <ArrowUpRight className="size-4" /></a>}
+                 {"videoLink" in activeProject && activeProject.videoLink && <Button asChild variant="link" className="h-auto p-0 text-primary underline underline-offset-4"><a href={activeProject.videoLink} target="_blank" rel="noopener noreferrer">Open video in Google Drive <ArrowUpRight className="size-4" /></a></Button>}
 
                 <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
               </div>
