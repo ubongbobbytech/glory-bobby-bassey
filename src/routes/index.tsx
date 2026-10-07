@@ -25,7 +25,7 @@ import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
-const portraitUrl = new URL(gloryAsset.url, "https://glory-bobby-bassey.lovable.app").href;
+const portraitUrl = new URL(gloryNewAsset.url, "https://glory-bobby-bassey.lovable.app").href;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
