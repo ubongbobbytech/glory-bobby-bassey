@@ -17,7 +17,7 @@ import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
-import realEstateImage from "@/assets/real-estate-project.jpg";
+import realEstateImage from "@/assets/real-estate-frame.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
@@ -118,9 +118,7 @@ const projects = [
     description:
       "A GoHighLevel sales funnel for the real estate industry, shown in a project walkthrough.",
     image: realEstateImage,
-    alt: "Contemporary residential property representing the real estate project video",
-    embed: realEstateVideo,
-    videoLink: realEstateLink,
+    alt: "Screenshot from the real estate sales funnel walkthrough",
     overview:
       "A walkthrough of a real estate sales funnel in GoHighLevel. Watch the video to see the project in context.",
     highlights: [
@@ -135,8 +133,6 @@ const projects = [
     description: "A lead segmentation automation created in Make.com, shown in a project walkthrough.",
     image: projectMessaging,
     alt: "Automation workflow illustration for the lead segmentation project",
-    embed: drivePreview(leadSegmentationLink),
-    videoLink: leadSegmentationLink,
     overview: "A walkthrough of a lead segmentation project created in Make.com. Watch the video to see the automation in context.",
     highlights: ["Lead segmentation workflow", "Created in Make.com"],
     results: [],
@@ -206,6 +202,8 @@ const caseStudies = [
   { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
   { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
   { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
+  { image: realEstateImage, title: "Real Estate Sales Funnel", problem: "", solution: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
+  { image: projectMessaging, title: "Lead Segmentation in Make.com", problem: "", solution: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
   { image: projectOnboarding, title: "Task Management in Airtable", problem: "", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
   { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
@@ -514,7 +512,7 @@ function Index() {
       <section id="contact" className="py-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <SectionHeading eyebrow="Contact" title="Let's build your system" text="Tell me what's slowing your business down and I'll show you how to automate it." />
-          <Reveal><CtaButton href={`mailto:${EMAIL}`}>Send an inquiry</CtaButton></Reveal>
+          <Reveal><CtaButton href="https://calendly.com/glorybobbybassey/30min">Let's talk</CtaButton></Reveal>
         </div>
       </section>
 
