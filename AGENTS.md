@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep externally hosted portfolio videos as project-level preview links with an open-source fallback, so visitors can still reach media when inline playback is unavailable.
+- Resolve Lovable asset-pointer portrait paths against the public Lovable origin so external deployments do not request a missing local asset proxy.
