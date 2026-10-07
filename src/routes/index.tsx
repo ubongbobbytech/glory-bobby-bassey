@@ -13,7 +13,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
