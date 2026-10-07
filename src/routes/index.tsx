@@ -23,7 +23,8 @@ import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
-const portraitUrl = gloryAsset.url;
+// The asset path is served by Lovable, not by external hosts such as Netlify.
+const portraitUrl = new URL(gloryAsset.url, "https://glory-bobby-bassey.lovable.app").href;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
@@ -137,26 +138,6 @@ const projects = [
     results: [],
     tools: ["Make.com"],
   },
-  {
-    title: "Client Onboarding Automation",
-    description:
-      "A hands-free onboarding funnel in GoHighLevel that takes new leads from signup to kickoff without manual steps.",
-    image: projectOnboarding,
-    alt: "Client onboarding funnel and automation workflow on a laptop screen",
-    overview:
-      "A complete onboarding system built in GoHighLevel — new signups are captured, qualified and routed through an automated workflow that emails, creates deals and notifies the team before anyone lifts a finger.",
-    highlights: [
-      "Built a multi-stage onboarding funnel with automatic lead capture and tagging",
-      "Automated welcome sequences, deal creation and team notifications",
-      "Added follow-up reminders so no new client waits more than 24 hours",
-    ],
-    results: [
-      { label: "Onboarding time", value: "-65%" },
-      { label: "Follow-up speed", value: "<24h" },
-      { label: "Manual steps", value: "0" },
-    ],
-    tools: ["GoHighLevel", "Zapier", "Calendly", "Google Sheets"],
-  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -198,8 +179,6 @@ const services = [
 // TODO: replace with real case study numbers
 const caseStudies = [
   { image: projectDashboard, title: "Lead Capture System", problem: "Lead flow was unpredictable and hard to track.", solution: "Built a GoHighLevel funnel with qualification questions and instant follow-up.", results: ["2x more qualified leads", "Follow-ups fully automated", "One dashboard for every source"] },
-  { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
-  { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
   { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
   { image: realEstateImage, title: "Real Estate Sales Funnel", problem: "", solution: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
   { image: projectMessaging, title: "Lead Segmentation in Make.com", problem: "", solution: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
@@ -230,8 +209,6 @@ const testimonials = [
   { quote: "Our booking funnel was rebuilt in weeks and the reminders alone cut our no-shows dramatically.", name: "Client Name", role: "Coach" },
   { quote: "Everything used to be manual. Now it's organised, automated and easy for the team to follow.", name: "Client Name", role: "CEO" },
   { quote: "Clear communication, fast delivery and systems that actually make sense. Highly recommended.", name: "Client Name", role: "Marketing Director" },
-  { quote: "The video tutorials Glory produced made onboarding our customers so much easier.", name: "Client Name", role: "Operations Lead" },
-  { quote: "Proactive, detail-oriented and always thinking about what drives results for the business.", name: "Client Name", role: "Business Owner" },
 ];
 
 
@@ -460,7 +437,7 @@ function Index() {
       <section id="testimonials" className="bg-secondary/60 py-28">
         <div className="mx-auto max-w-7xl px-6">
           <SectionHeading eyebrow="Client Wins" title="What clients say" text="Predictable systems, better conversions and more time back." />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {testimonials.map((t, i) => (
               <figure key={i} className="flex flex-col rounded-2xl border border-border bg-card p-7">
                 <div className="flex gap-1 text-accent">{Array.from({ length: 5 }).map((_, s) => <Star key={s} className="size-4 fill-current" />)}</div>

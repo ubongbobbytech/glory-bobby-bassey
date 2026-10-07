@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Use an externally accessible portrait URL for Netlify; retain four reviews and four Selected Work projects; remove Pipeline Cleanup and Appointment Booking Flow case studies.
+
 - [x] Scroll-triggered button animations (added)
 - [x] Fourth project card (Client Onboarding Automation)
 - [x] Flip button animation to slide in from the left (user request)
