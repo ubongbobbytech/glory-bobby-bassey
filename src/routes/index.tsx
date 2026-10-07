@@ -20,7 +20,8 @@ import projectVideo from "@/assets/project-video.jpg";
 import realEstateImage from "@/assets/real-estate-frame.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
-import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
+import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
+
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
