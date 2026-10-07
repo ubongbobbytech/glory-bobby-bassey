@@ -271,7 +271,8 @@ function Index() {
             <p className="mt-5 text-sm text-muted-foreground">Usually responds within 24 hours</p>
           </div>
           <div className="relative min-h-[430px] overflow-hidden bg-espresso md:min-h-[620px]">
-            <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="absolute inset-0 h-full w-full object-cover object-top" />
+            <img src={heroPortraitUrl} alt="Portrait of Glory Bobby Bassey" className="absolute inset-0 h-full w-full object-cover object-top" />
+
           </div>
         </div>
       </header>
