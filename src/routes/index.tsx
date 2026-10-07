@@ -295,7 +295,7 @@ function Index() {
       {/* About */}
       <section id="about" className="py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-[2fr_3fr]">
-          <img src={heroImg} alt="Workspace with laptop and marketing dashboards" className="aspect-square w-full rounded-3xl border border-border object-cover" />
+          <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="aspect-square w-full rounded-3xl border border-border object-cover object-top" />
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">About me</span>
             <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Systems that work while you sleep</h2>
