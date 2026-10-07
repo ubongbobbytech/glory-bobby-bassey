@@ -17,7 +17,7 @@ import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
-import realEstateImage from "@/assets/real-estate-project.jpg";
+import realEstateImage from "@/assets/real-estate-frame.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
@@ -26,7 +26,6 @@ import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 const portraitUrl = gloryAsset.url;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
-const realEstateVideo = `https://drive.google.com/file/d/${realEstateDriveId}/preview`;
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
 const leadSegmentationLink = "https://drive.google.com/file/d/1WxUpzoAilg-xQ-qBhM09OnpHl6jjmaW9/view";
 const airtableTaskLink = "https://drive.google.com/file/d/1nqkrdUbx-9mx9DQktPdBmx2lpciSlSn6/view";
@@ -118,9 +117,7 @@ const projects = [
     description:
       "A GoHighLevel sales funnel for the real estate industry, shown in a project walkthrough.",
     image: realEstateImage,
-    alt: "Contemporary residential property representing the real estate project video",
-    embed: realEstateVideo,
-    videoLink: realEstateLink,
+    alt: "Screenshot from the real estate sales funnel walkthrough",
     overview:
       "A walkthrough of a real estate sales funnel in GoHighLevel. Watch the video to see the project in context.",
     highlights: [
@@ -135,8 +132,6 @@ const projects = [
     description: "A lead segmentation automation created in Make.com, shown in a project walkthrough.",
     image: projectMessaging,
     alt: "Automation workflow illustration for the lead segmentation project",
-    embed: drivePreview(leadSegmentationLink),
-    videoLink: leadSegmentationLink,
     overview: "A walkthrough of a lead segmentation project created in Make.com. Watch the video to see the automation in context.",
     highlights: ["Lead segmentation workflow", "Created in Make.com"],
     results: [],
@@ -206,6 +201,8 @@ const caseStudies = [
   { image: projectMessaging, title: "Appointment Booking Flow", problem: "Slow replies meant prospects went cold before booking.", solution: "Instant SMS/email replies, self-serve calendar booking and reminder sequences.", results: ["More booked calls in 30 days", "Fewer no-shows", "Hours saved each week"] },
   { image: projectOnboarding, title: "Pipeline Cleanup", problem: "Deals were scattered across spreadsheets and inboxes.", solution: "Consolidated everything into clean CRM stages with automatic task creation.", results: ["Clear stage visibility", "No lost deals", "Faster handoffs to sales"] },
   { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
+  { image: realEstateImage, title: "Real Estate Sales Funnel", problem: "", solution: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
+  { image: projectMessaging, title: "Lead Segmentation in Make.com", problem: "", solution: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
   { image: projectOnboarding, title: "Task Management in Airtable", problem: "", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
   { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
@@ -252,7 +249,7 @@ function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: Reac
 
 function CtaButton({ children, href = "#contact" }: { children: React.ReactNode; href?: string }) {
   return (
-    <Button asChild size="lg" className="glow-primary h-12 rounded-sm px-7 font-medium"><a href={href}>{children} <ArrowRight className="size-4" /></a></Button>
+    <Button asChild size="lg" className="glow-primary h-12 rounded-sm px-7 font-medium"><a href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{children} <ArrowRight className="size-4" /></a></Button>
   );
 }
 
@@ -514,7 +511,7 @@ function Index() {
       <section id="contact" className="py-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <SectionHeading eyebrow="Contact" title="Let's build your system" text="Tell me what's slowing your business down and I'll show you how to automate it." />
-          <Reveal><CtaButton href={`mailto:${EMAIL}`}>Send an inquiry</CtaButton></Reveal>
+          <Reveal><CtaButton href="https://calendly.com/glorybobbybassey/30min">Let's talk</CtaButton></Reveal>
         </div>
       </section>
 
@@ -540,9 +537,7 @@ function Index() {
           {activeProject && (
             <>
               <div className="relative bg-espresso">
-                {"embed" in activeProject && activeProject.embed ? (
-                  <iframe src={activeProject.embed} title={`${activeProject.title} video`} allow="autoplay; fullscreen" allowFullScreen className="aspect-video w-full" />
-                ) : activeProject.video ? (
+                {activeProject.video ? (
                   <video
                     src={activeProject.video}
                     poster={activeProject.image}
@@ -636,7 +631,6 @@ function Index() {
                   </div>
                 </div>}
 
-                 {"videoLink" in activeProject && activeProject.videoLink && <Button asChild variant="link" className="h-auto p-0 text-primary underline underline-offset-4"><a href={activeProject.videoLink} target="_blank" rel="noopener noreferrer">Open video in Google Drive <ArrowUpRight className="size-4" /></a></Button>}
 
                 <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
               </div>
