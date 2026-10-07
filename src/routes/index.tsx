@@ -20,11 +20,14 @@ import realEstateImage from "@/assets/real-estate-frame.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
+import gloryHeroAsset from "@/assets/glory-bassey.jpg.asset.json";
 
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
+// Hero (header) uses the original portrait; About uses the newest headshot.
 const portraitUrl = new URL(gloryNewAsset.url, "https://glory-bobby-bassey.lovable.app").href;
+const heroPortraitUrl = new URL(gloryHeroAsset.url, "https://glory-bobby-bassey.lovable.app").href;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
@@ -268,7 +271,8 @@ function Index() {
             <p className="mt-5 text-sm text-muted-foreground">Usually responds within 24 hours</p>
           </div>
           <div className="relative min-h-[430px] overflow-hidden bg-espresso md:min-h-[620px]">
-            <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="absolute inset-0 h-full w-full object-cover object-top" />
+            <img src={heroPortraitUrl} alt="Portrait of Glory Bobby Bassey" className="absolute inset-0 h-full w-full object-cover object-top" />
+
           </div>
         </div>
       </header>
