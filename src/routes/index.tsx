@@ -13,18 +13,18 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-import heroImg from "@/assets/workspace-hero.jpg";
 import projectDashboard from "@/assets/project-dashboard.jpg";
 import projectMessaging from "@/assets/project-messaging.jpg";
 import projectVideo from "@/assets/project-video.jpg";
 import realEstateImage from "@/assets/real-estate-frame.jpg";
 import projectOnboarding from "@/assets/project-onboarding.jpg";
 import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
-import gloryAsset from "@/assets/glory-bassey.jpg.asset.json";
+import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
+
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
-const portraitUrl = new URL(gloryAsset.url, "https://glory-bobby-bassey.lovable.app").href;
+const portraitUrl = new URL(gloryNewAsset.url, "https://glory-bobby-bassey.lovable.app").href;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
@@ -294,7 +294,7 @@ function Index() {
       {/* About */}
       <section id="about" className="py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-[2fr_3fr]">
-          <img src={heroImg} alt="Workspace with laptop and marketing dashboards" className="aspect-square w-full rounded-3xl border border-border object-cover" />
+          <img src={portraitUrl} alt="Portrait of Glory Bobby Bassey" className="aspect-square w-full rounded-3xl border border-border object-cover object-top" />
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">About me</span>
             <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Systems that work while you sleep</h2>
