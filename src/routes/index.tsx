@@ -537,9 +537,7 @@ function Index() {
           {activeProject && (
             <>
               <div className="relative bg-espresso">
-                {"embed" in activeProject && activeProject.embed ? (
-                  <iframe src={activeProject.embed} title={`${activeProject.title} video`} allow="autoplay; fullscreen" allowFullScreen className="aspect-video w-full" />
-                ) : activeProject.video ? (
+                {activeProject.video ? (
                   <video
                     src={activeProject.video}
                     poster={activeProject.image}
@@ -633,7 +631,6 @@ function Index() {
                   </div>
                 </div>}
 
-                 {"videoLink" in activeProject && activeProject.videoLink && <Button asChild variant="link" className="h-auto p-0 text-primary underline underline-offset-4"><a href={activeProject.videoLink} target="_blank" rel="noopener noreferrer">Open video in Google Drive <ArrowUpRight className="size-4" /></a></Button>}
 
                 <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
               </div>
