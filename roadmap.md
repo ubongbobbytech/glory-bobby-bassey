@@ -7,3 +7,4 @@
 - [x] Add the shared real estate video link to selected work with an industry-specific project card and detail popup
 - [x] Replace general real estate copy with the verified video title and GoHighLevel context; deeper steps and results remain unverified
 - [x] Add Make.com lead segmentation video to Past Projects and Airtable task management and GHL conversation AI walkthrough links to Case Studies
+- [x] Calendly "Let's talk" button; videos moved to Case Studies; stills in Selected Work; real estate video frame thumbnail
