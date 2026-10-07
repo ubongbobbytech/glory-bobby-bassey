@@ -26,7 +26,6 @@ import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 const portraitUrl = gloryAsset.url;
 const coachWendyVideo = coachWendyAsset.url;
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
-const realEstateVideo = `https://drive.google.com/file/d/${realEstateDriveId}/preview`;
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
 const leadSegmentationLink = "https://drive.google.com/file/d/1WxUpzoAilg-xQ-qBhM09OnpHl6jjmaW9/view";
 const airtableTaskLink = "https://drive.google.com/file/d/1nqkrdUbx-9mx9DQktPdBmx2lpciSlSn6/view";
@@ -250,7 +249,7 @@ function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: Reac
 
 function CtaButton({ children, href = "#contact" }: { children: React.ReactNode; href?: string }) {
   return (
-    <Button asChild size="lg" className="glow-primary h-12 rounded-sm px-7 font-medium"><a href={href}>{children} <ArrowRight className="size-4" /></a></Button>
+    <Button asChild size="lg" className="glow-primary h-12 rounded-sm px-7 font-medium"><a href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{children} <ArrowRight className="size-4" /></a></Button>
   );
 }
 
