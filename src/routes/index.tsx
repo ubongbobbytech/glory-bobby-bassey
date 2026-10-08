@@ -25,6 +25,9 @@ import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
 import gloryHeroAsset from "@/assets/glory-bassey.jpg.asset.json";
 
 import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
+import leadSegmentationAsset from "@/assets/lead-segmentation-workflow.png.asset.json";
+import airtableTaskAsset from "@/assets/airtable-tasks.png.asset.json";
+import conversationAiAsset from "@/assets/conversation-ai.png.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
 // Hero (header) uses the original portrait; About uses the newest headshot.
@@ -33,9 +36,6 @@ const heroPortraitUrl = publicPortfolioAsset(gloryHeroAsset.url);
 const coachWendyVideo = publicPortfolioAsset(coachWendyAsset.url);
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
-const leadSegmentationLink = "https://drive.google.com/file/d/1WxUpzoAilg-xQ-qBhM09OnpHl6jjmaW9/view";
-const airtableTaskLink = "https://drive.google.com/file/d/1nqkrdUbx-9mx9DQktPdBmx2lpciSlSn6/view";
-const conversationAiLink = "https://drive.google.com/file/d/13y6NF7OHD8uMXas_vGvBDgXMI76rO-kP/view";
 
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
@@ -135,9 +135,9 @@ const projects = [
   {
     title: "Lead Segmentation in Make.com",
     description: "A lead segmentation automation created in Make.com, shown in a project walkthrough.",
-    image: projectMessaging,
-    alt: "Automation workflow illustration for the lead segmentation project",
-    overview: "A walkthrough of a lead segmentation project created in Make.com. Watch the video to see the automation in context.",
+    image: publicPortfolioAsset(leadSegmentationAsset.url),
+    alt: "Screenshot of the lead segmentation workflow in Make.com",
+    overview: "A lead segmentation project created in Make.com, shown in the workflow screenshot.",
     highlights: ["Lead segmentation workflow", "Created in Make.com"],
     results: [],
     tools: ["Make.com"],
@@ -183,9 +183,6 @@ const services = [
 const caseStudies: PortfolioVideo[] = [
   { image: coachWendyPoster, title: "Coach Wendy Sales Funnel", description: "A sales funnel built in GoHighLevel for Coach Wendy.", results: ["10 sales on the first day of launch", "Follow-up in under 5 minutes", "0 manual steps"], video: coachWendyVideo, videoLink: coachWendyVideo },
   { image: realEstateImage, title: "Real Estate Sales Funnel", description: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
-  { image: projectMessaging, title: "Lead Segmentation in Make.com", description: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
-  { image: projectOnboarding, title: "Task Management in Airtable", description: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
-  { image: projectMessaging, title: "Conversation AI & Lead Scoring", description: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
 
 const problems = [
@@ -339,7 +336,7 @@ function Index() {
             ))}
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {[{ title: "Lead Capture System", image: projectDashboard }, { title: "Email Reactivation", image: projectVideo }].map((screenshot) => <figure key={screenshot.title}>
+            {[{ title: "Task Management in Airtable", image: publicPortfolioAsset(airtableTaskAsset.url) }, { title: "Conversation AI & Lead Scoring", image: publicPortfolioAsset(conversationAiAsset.url) }, { title: "Lead Capture System", image: projectDashboard }, { title: "Email Reactivation", image: projectVideo }].map((screenshot) => <figure key={screenshot.title}>
               <a href={screenshot.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${screenshot.title} image`}><img src={screenshot.image} alt={screenshot.title} loading="lazy" className="aspect-video w-full rounded-md object-cover" /></a>
               <figcaption className="mt-3 font-semibold">{screenshot.title}</figcaption>
             </figure>)}
