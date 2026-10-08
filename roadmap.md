@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Rename the process step to AI Automation; keep Selected Work still-only and Case Studies video-only with on-site playback, direct fallbacks and external-host-safe video URLs.
+
 - [x] Use an externally accessible portrait URL for Netlify; retain four reviews and four Selected Work projects; remove Pipeline Cleanup and Appointment Booking Flow case studies.
 
 - [x] Scroll-triggered button animations (added)
