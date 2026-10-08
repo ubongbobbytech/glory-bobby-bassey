@@ -1,6 +1,7 @@
 # Roadmap
 
-- [ ] Rename the process step to AI Automation; keep Selected Work still-only and Case Studies video-only with on-site playback, direct fallbacks and external-host-safe video URLs.
+- [x] Rename the process step to AI Automation; keep Selected Work still-only and Case Studies video-only with on-site players, direct fallbacks and external-host-safe video URLs.
+- [ ] Add Make.com, Airtable and Conversation AI video walkthroughs when the user supplies actual video links; the current shared files are PNG screenshots and are displayed in Selected Work.
 
 - [x] Use an externally accessible portrait URL for Netlify; retain four reviews and four Selected Work projects; remove Pipeline Cleanup and Appointment Booking Flow case studies.
 

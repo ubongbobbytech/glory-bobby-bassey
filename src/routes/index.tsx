@@ -24,7 +24,7 @@ import coachWendyPoster from "@/assets/coach-wendy-poster.jpg";
 import gloryNewAsset from "@/assets/glory-bassey-new.jpg.asset.json";
 import gloryHeroAsset from "@/assets/glory-bassey.jpg.asset.json";
 
-import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
+import coachWendyAsset from "@/assets/coach-wendy-web.mp4.asset.json";
 import leadSegmentationAsset from "@/assets/lead-segmentation-workflow.png.asset.json";
 import airtableTaskAsset from "@/assets/airtable-tasks.png.asset.json";
 import conversationAiAsset from "@/assets/conversation-ai.png.asset.json";
