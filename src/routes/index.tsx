@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Sparkles } from "lucide-react";
+import { Linkedin, Mail, ArrowUpRight, ArrowRight, Check, X, Star, Workflow, Bot, Filter, Share2, Sparkles, Play } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
+import { PortfolioVideoDialog, type PortfolioVideo } from "@/components/portfolio-video";
+import { publicPortfolioAsset } from "@/lib/portfolio-media";
 
 import {
   Dialog,
@@ -26,15 +28,14 @@ import coachWendyAsset from "@/assets/coach-wendy-sales-funnel.mp4.asset.json";
 
 // The asset path is served by Lovable, not by external hosts such as Netlify.
 // Hero (header) uses the original portrait; About uses the newest headshot.
-const portraitUrl = new URL(gloryNewAsset.url, "https://glory-bobby-bassey.lovable.app").href;
-const heroPortraitUrl = new URL(gloryHeroAsset.url, "https://glory-bobby-bassey.lovable.app").href;
-const coachWendyVideo = coachWendyAsset.url;
+const portraitUrl = publicPortfolioAsset(gloryNewAsset.url);
+const heroPortraitUrl = publicPortfolioAsset(gloryHeroAsset.url);
+const coachWendyVideo = publicPortfolioAsset(coachWendyAsset.url);
 const realEstateDriveId = "1to928aVZaW2lt9mIWxINrKd4TCN9nMwc";
 const realEstateLink = `https://drive.google.com/file/d/${realEstateDriveId}/view`;
 const leadSegmentationLink = "https://drive.google.com/file/d/1WxUpzoAilg-xQ-qBhM09OnpHl6jjmaW9/view";
 const airtableTaskLink = "https://drive.google.com/file/d/1nqkrdUbx-9mx9DQktPdBmx2lpciSlSn6/view";
 const conversationAiLink = "https://drive.google.com/file/d/13y6NF7OHD8uMXas_vGvBDgXMI76rO-kP/view";
-const drivePreview = (link: string) => link.replace(/\/view$/, "/preview");
 
 /* --- Update these when you have the final details ---------------------- */
 const EMAIL = "glorybobbybassey@gmail.com"; // TODO: replace with your real email
@@ -43,7 +44,8 @@ const LINKEDIN_URL = "https://www.linkedin.com/"; // TODO: replace with your pro
 
 const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Past Projects", href: "#projects" },
+  { label: "Selected Work", href: "#projects" },
+  { label: "Case Studies", href: "#case-studies" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Tools", href: "#tools" },
   { label: "Contact", href: "#contact" },
@@ -101,7 +103,6 @@ const projects = [
       "A complete sales funnel for Coach Wendy — lead capture, booking and automated follow-up that turns enquiries into enrolled clients.",
     image: coachWendyPoster,
     alt: "Coach Wendy sales funnel walkthrough video",
-    video: coachWendyVideo,
     overview:
       "A full sales funnel built for Coach Wendy: a high-converting opt-in page, automated email and SMS follow-up, and a booking flow that moves warm enquiries all the way through to a paid coaching client.",
     highlights: [
@@ -179,14 +180,12 @@ const services = [
   { icon: Sparkles, title: "Smart AI Agents", text: "Custom AI agents that answer leads, qualify enquiries and book calls on autopilot." },
 ];
 
-// TODO: replace with real case study numbers
-const caseStudies = [
-  { image: projectDashboard, title: "Lead Capture System", problem: "Lead flow was unpredictable and hard to track.", solution: "Built a GoHighLevel funnel with qualification questions and instant follow-up.", results: ["2x more qualified leads", "Follow-ups fully automated", "One dashboard for every source"] },
-  { image: projectVideo, title: "Email Reactivation", problem: "A large list of past leads was never followed up.", solution: "Wrote a segmented win-back sequence with clear calls to action.", results: ["Warm leads recovered", "Healthy open rates", "No extra ad spend"] },
-  { image: realEstateImage, title: "Real Estate Sales Funnel", problem: "", solution: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
-  { image: projectMessaging, title: "Lead Segmentation in Make.com", problem: "", solution: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
-  { image: projectOnboarding, title: "Task Management in Airtable", problem: "", solution: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
-  { image: projectMessaging, title: "Conversation AI & Lead Scoring", problem: "", solution: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
+const caseStudies: PortfolioVideo[] = [
+  { image: coachWendyPoster, title: "Coach Wendy Sales Funnel", description: "A sales funnel built in GoHighLevel for Coach Wendy.", results: ["10 sales on the first day of launch", "Follow-up in under 5 minutes", "0 manual steps"], video: coachWendyVideo, videoLink: coachWendyVideo },
+  { image: realEstateImage, title: "Real Estate Sales Funnel", description: "A GoHighLevel sales funnel for the real estate industry, shown in the video walkthrough.", results: [], videoLink: realEstateLink },
+  { image: projectMessaging, title: "Lead Segmentation in Make.com", description: "A lead segmentation automation created in Make.com, shown in the video walkthrough.", results: [], videoLink: leadSegmentationLink },
+  { image: projectOnboarding, title: "Task Management in Airtable", description: "A task management system created in Airtable, demonstrated in the video walkthrough.", results: [], videoLink: airtableTaskLink },
+  { image: projectMessaging, title: "Conversation AI & Lead Scoring", description: "A chatbot in GoHighLevel that converses with leads, scores them and sends the appropriate links.", results: [], videoLink: conversationAiLink },
 ];
 
 const problems = [
@@ -235,6 +234,7 @@ function CtaButton({ children, href = "#contact" }: { children: React.ReactNode;
 
 function Index() {
   const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
+  const [activeVideo, setActiveVideo] = useState<PortfolioVideo | null>(null);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground">
@@ -279,7 +279,7 @@ function Index() {
 
       <section aria-label="Marketing automation process" className="bg-espresso py-8 text-espresso-foreground">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-3 px-6 text-center text-sm font-semibold uppercase sm:text-base">
-          {["Lead capture", "CRM", "Automation", "Follow-up"].map((step, i) => <span key={step} className="flex items-center gap-4">{i > 0 && <ArrowRight aria-hidden="true" className="size-4 text-accent" />}{step}</span>)}
+          {["Lead capture", "CRM", "AI Automation", "Follow-up"].map((step, i) => <span key={step} className="flex items-center gap-4">{i > 0 && <ArrowRight aria-hidden="true" className="size-4 text-accent" />}{step}</span>)}
         </div>
       </section>
 
@@ -318,19 +318,7 @@ function Index() {
             {projects.map((p, i) => (
               <article key={p.title} className="group flex flex-col overflow-hidden rounded-md bg-espresso text-espresso-foreground transition-transform hover:-translate-y-1">
                 <div className="overflow-hidden bg-espresso">
-                  {p.video ? (
-                    <video
-                      src={p.video}
-                      poster={p.image}
-                      controls
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="aspect-[4/3] w-full object-cover"
-                    />
-                  ) : (
-                    <img src={p.image} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  )}
+                  <img src={p.image} alt={p.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
@@ -344,10 +332,17 @@ function Index() {
                     <Button variant="link" onClick={() => setActiveProject(p)} className="h-auto justify-start p-0 text-sm font-medium text-espresso-foreground hover:text-accent">
                       See more <ArrowUpRight className="size-4" />
                     </Button>
+                    {caseStudies.some((video) => video.title === p.title) && <Button variant="link" onClick={() => setActiveVideo(caseStudies.find((video) => video.title === p.title) ?? null)} className="mt-3 h-auto justify-start p-0 text-sm text-espresso-foreground hover:text-accent"><Play /> Watch walkthrough</Button>}
                   </Reveal>
                 </div>
               </article>
             ))}
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {[{ title: "Lead Capture System", image: projectDashboard }, { title: "Email Reactivation", image: projectVideo }].map((screenshot) => <figure key={screenshot.title}>
+              <a href={screenshot.image} target="_blank" rel="noopener noreferrer" aria-label={`Open ${screenshot.title} image`}><img src={screenshot.image} alt={screenshot.title} loading="lazy" className="aspect-video w-full rounded-md object-cover" /></a>
+              <figcaption className="mt-3 font-semibold">{screenshot.title}</figcaption>
+            </figure>)}
           </div>
         </div>
       </section>
@@ -377,15 +372,13 @@ function Index() {
           <div className="grid gap-8 md:grid-cols-2">
             {caseStudies.map((c) => (
               <article key={c.title} className="overflow-hidden rounded-md bg-espresso text-espresso-foreground">
-                 {"videoLink" in c && c.videoLink ? (
-                   <iframe src={drivePreview(c.videoLink)} title={`${c.title} video walkthrough`} loading="lazy" allow="autoplay; fullscreen" allowFullScreen className="aspect-video w-full border-0" />
-                 ) : (
-                   <img src={c.image} alt={c.title} className="aspect-[16/8] w-full object-cover" />
-                 )}
+                <Button variant="ghost" onClick={() => setActiveVideo(c)} aria-label={`Play ${c.title}`} className="group relative block h-auto w-full overflow-hidden rounded-none p-0">
+                  <img src={c.image} alt={c.title} loading="lazy" className="aspect-video w-full object-cover" />
+                  <span className="absolute inset-0 flex items-center justify-center bg-espresso/20"><span className="flex size-14 items-center justify-center rounded-full bg-background text-foreground shadow-lg transition-transform group-hover:scale-110"><Play className="size-6 fill-current" /></span></span>
+                </Button>
                 <div className="space-y-4 p-7">
                   <h3 className="text-2xl font-semibold">{c.title}</h3>
-                   {c.problem && <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">PROBLEM</p><p className="mt-1 text-espresso-foreground/75">{c.problem}</p></div>}
-                  <div><p className="text-xs font-semibold tracking-[0.2em] text-accent">SOLUTION</p><p className="mt-1 text-espresso-foreground/75">{c.solution}</p></div>
+                  <p className="text-espresso-foreground/75">{c.description}</p>
                    {c.results.length > 0 && <div>
                     <p className="text-xs font-semibold tracking-[0.2em] text-accent">RESULTS</p>
                     <ul className="mt-2 space-y-1.5">
@@ -394,11 +387,10 @@ function Index() {
                       ))}
                     </ul>
                    </div>}
-                   {"videoLink" in c && c.videoLink && (
-                     <Button asChild variant="link" className="h-auto p-0 text-espresso-foreground underline underline-offset-4 hover:text-accent">
-                       <a href={c.videoLink} target="_blank" rel="noopener noreferrer">Watch walkthrough <ArrowUpRight className="size-4" /></a>
-                     </Button>
-                   )}
+                  <div className="flex flex-wrap gap-x-6 gap-y-3">
+                    <Button variant="link" onClick={() => setActiveVideo(c)} className="h-auto p-0 text-espresso-foreground hover:text-accent"><Play /> Watch walkthrough</Button>
+                    <Button asChild variant="link" className="h-auto p-0 text-espresso-foreground/75 hover:text-accent"><a href={c.videoLink} target="_blank" rel="noopener noreferrer">Open original <ArrowUpRight /></a></Button>
+                  </div>
                 </div>
               </article>
             ))}
@@ -518,17 +510,6 @@ function Index() {
           {activeProject && (
             <>
               <div className="relative bg-espresso">
-                {activeProject.video ? (
-                  <video
-                    src={activeProject.video}
-                    poster={activeProject.image}
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="aspect-[16/9] w-full rounded-t-xl object-cover"
-                  />
-                ) : (
                   <img
                     src={activeProject.image}
                     alt={activeProject.alt}
@@ -536,10 +517,7 @@ function Index() {
                     height={704}
                     className="aspect-[16/9] w-full rounded-t-xl object-cover"
                   />
-                )}
-                {!activeProject.video && !("embed" in activeProject && activeProject.embed) && (
                   <div className="absolute inset-0 rounded-t-xl bg-gradient-to-t from-card via-card/40 to-transparent" />
-                )}
               </div>
 
               <div className="space-y-8 p-6 md:p-10">
@@ -613,12 +591,16 @@ function Index() {
                 </div>}
 
 
-                <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
+                <div className="flex flex-wrap gap-3">
+                  {caseStudies.some((video) => video.title === activeProject.title) && <Button variant="outline" onClick={() => { setActiveVideo(caseStudies.find((video) => video.title === activeProject.title) ?? null); setActiveProject(null); }}><Play /> Watch walkthrough</Button>}
+                  <Button asChild><a href={`mailto:${EMAIL}`}><Mail className="size-4" />Ask me about this project</a></Button>
+                </div>
               </div>
             </>
           )}
         </DialogContent>
       </Dialog>
+      <PortfolioVideoDialog video={activeVideo} onClose={() => setActiveVideo(null)} />
     </div>
   );
 }
