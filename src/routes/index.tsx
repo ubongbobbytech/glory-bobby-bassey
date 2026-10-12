@@ -386,7 +386,6 @@ function Index() {
                    </div>}
                   <div className="flex flex-wrap gap-x-6 gap-y-3">
                     <Button variant="link" onClick={() => setActiveVideo(c)} className="h-auto p-0 text-espresso-foreground hover:text-accent"><Play /> Watch walkthrough</Button>
-                    <Button asChild variant="link" className="h-auto p-0 text-espresso-foreground/75 hover:text-accent"><a href={c.videoLink} target="_blank" rel="noopener noreferrer">Open original <ArrowUpRight /></a></Button>
                   </div>
                 </div>
               </article>
