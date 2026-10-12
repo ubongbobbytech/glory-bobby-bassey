@@ -1,5 +1,6 @@
 # Roadmap
 
+- [x] Case Studies: removed the "Open original" link; "Watch walkthrough" opens the on-screen player in a popup.
 - [x] Rename the process step to AI Automation; keep Selected Work still-only and Case Studies video-only with on-site players, direct fallbacks and external-host-safe video URLs.
 - [ ] Add Make.com, Airtable and Conversation AI video walkthroughs when the user supplies actual video links; the current shared files are PNG screenshots and are displayed in Selected Work.
 
